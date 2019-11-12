@@ -1,0 +1,53 @@
+﻿@model DotNetExpress.Model.Model.Category
+@{
+    Layout = "~/Views/Home/Home.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/CSS/Business/Category/Add.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+
+</head>
+<body>
+    <div class="menu">
+        <form method="post">
+            <table>
+                <tr>
+                    <td>Code</td>
+                    <td><input Class="td" type="text" name="Code" value="@Model.Code" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input  Class="td"  type="text" name="Name" value="@Model.Name" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input  class='btn btn-info btn-xs' type="submit" value="Add" /></td>
+                    <td>
+                        @if (ViewBag.Message != null)
+                        {
+                            <h3>
+                                <b>
+                                    @ViewBag.Message;
+                                </b>
+                            </h3>
+                        }
+
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+</body>
+</html>

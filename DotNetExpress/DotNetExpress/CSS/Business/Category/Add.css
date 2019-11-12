@@ -1,0 +1,32 @@
+﻿table {
+    position:center;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 13px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+.menu{
+    margin-left:350px;
+    width:500px;
+    margin-top: 40px;
+    
+}
+.Heading{
+    margin-left:120PX;
+    color:red;
+    position:center;
+    font-size: 15px;
+    font:bold;
+}
+.td{
+    height:20px;
+}

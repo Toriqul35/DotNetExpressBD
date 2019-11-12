@@ -1,0 +1,40 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <title>www.businessbd.com</title>
+
+    <link href="~/CSS/Business/Home.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="head">
+
+        <ul>
+            <li> <img src="~/Image/logo.png" alt="logo" height="45" width="165" /></li>
+            <li style="margin-left:28px">@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Category", "Add", "Category")</li>
+            <li>@Html.ActionLink("Customer", "Search", "Category")</li>
+            <li>@Html.ActionLink("Supplier", "Index", "Supplier")</li>
+            <li>@Html.ActionLink("Purchase", "Index", "Purchase")</li>
+            <li>@Html.ActionLink("Sales ", "Index", "Sales")</li>
+            <li>@Html.ActionLink("Stock", "Index", "Stock")</li>
+            <li>
+                @Html.ActionLink("Total Enrolled", "Index", "Home")
+                <ul>
+                    <li> @Html.ActionLink("Category", "GetAll", "Category")</li>
+                    <li> @Html.ActionLink("Customer", "Index", "Customer")</li>
+                    <li> @Html.ActionLink("Supplier", "Index", "Supplier")</li>
+                    <li>@Html.ActionLink("Report", "Index", "Report")</li>
+                </ul>
+            </li>
+            <li>@Html.ActionLink("Login", "Index", "Login")</li>
+        </ul>
+    </div>
+    <div>
+        @RenderBody();
+    </div>
+</body>
+</html>
