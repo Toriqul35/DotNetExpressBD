@@ -14,20 +14,25 @@
         <input id="myInput" type="text" placeholder="Search..">
         <table class="table table-striped custab">
             <thead>
-                <a class="btn btn-primary btn-xs pull-right" @Html.ActionLink("Add New Category", "Add", "Category")</a>
+                <a class="btn btn-primary btn-xs pull-right"@Html.ActionLink("Add New Category", "Add", "Category")></a>
                 <tr>
                     <th> @Html.DisplayNameFor(model => model.Code)</th>
                     <th> @Html.DisplayNameFor(model => model.Name)</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
+
             @foreach (var item in Model)
             {
                 <tr>
                     <td> @Html.DisplayFor(modelItem => item.Code)</td>
                     <td> @Html.DisplayFor(modelItem => item.Name)</td>
-                    <td class="text-center"><a class='btn btn-info btn-xs'@Html.ActionLink("Edit", "Update", new { id = item.Id })></a> 
-                    <a class="btn btn-danger btn-xs" @Html.ActionLink("Delete", "Delete", new { id = item.Id })></a></td>
+                    
+                    
+                    <td class="text-center">
+                    <a class='btn btn-info btn-xs'@Html.ActionLink("Edit", "Update", new { id = item.Id })></a> 
+                    <a class="btn btn-danger btn-xs" @Html.ActionLink("Delete", "Delete", new { id = item.Id })></a>
+                    </td>
                 </tr>
 
             }

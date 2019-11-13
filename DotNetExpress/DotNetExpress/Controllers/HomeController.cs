@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using DotNetExpress.BLL.BLL;
-using DotNetExpress.Model.Model;
-
+﻿using System.Web.Mvc;
 namespace DotNetExpress.Controllers
 {
     public class HomeController : Controller
     {
+       // DatabaseDbContext DatabaseDbContext = new DatabaseDbContext();
+        
         // GET: Home
         [HttpGet]
         public ActionResult Index()
@@ -20,7 +15,17 @@ namespace DotNetExpress.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
 
+        //[HttpPost]
+        //public ActionResult AdminLogin()
+        //{
 
+        //    var Addmin = _CategoryManager.
+        //    return View();
+        }
     }
-}

@@ -1,0 +1,100 @@
+﻿@model DotNetExpress.Model.CustomerViewModel
+@{
+    Layout = "~/Views/Home/Home.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/CSS/Business/Add.css" rel="stylesheet" type="text/css" />
+    <title>New Category Add</title>
+
+</head>
+<body>
+    <div class="menu">
+        <form method="post">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Code)</td>
+                    @*<td><input Class="td" type="text" name="Code" value="@Model.Code" /></td>*@
+                    <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Code)</td>
+                    
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Name)</td>
+                    <td><input Class="td" type="text" name="Name" value="@Model.Name" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><input Class="td" type="text" name="Address" value="@Model.Address" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input Class="td" type="text" name="Email" value="@Model.Email" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td><input Class="td" type="text" name="Contact" value="@Model.Contact" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Loyolty Point</td>
+                    <td><input Class="td" type="text" name="Loyolty_Point" value="@Model.Loyolty_Point" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input class='btn btn-info btn-xs' type="submit" value="Create" /></td>
+                    <td>
+                        @if (ViewBag.Message != null)
+                        {
+                            <h3>
+                                <b>
+                                    @ViewBag.Message
+                                </b>
+                            </h3>
+                        }
+
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+
+        <table>
+            <tr>
+                <th>Sl</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>Loyolty_Point</th>
+            </tr>
+            @{ int i = 1;}
+            @foreach (var customer in Model.Customers)
+            
+            {
+                <tr>
+                    <td>@(i++)</td>
+                    <td>@customer.Code</td>
+                    <td>@customer.Name</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.Contact</td>
+                    <td>@customer.Loyolty_Point</td>
+               
+                </tr>
+             
+              }
+
+        </table>
+    </div>
+</body>
+</html>

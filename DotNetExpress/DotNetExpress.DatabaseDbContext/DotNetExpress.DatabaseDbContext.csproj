@@ -57,6 +57,14 @@
     <Compile Include="Migrations\201911121104543_Added.Designer.cs">
       <DependentUpon>201911121104543_Added.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911122008256_AddminLogin.cs" />
+    <Compile Include="Migrations\201911122008256_AddminLogin.Designer.cs">
+      <DependentUpon>201911122008256_AddminLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911131144105_Customer.cs" />
+    <Compile Include="Migrations\201911131144105_Customer.Designer.cs">
+      <DependentUpon>201911131144105_Customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -76,6 +84,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911121104543_Added.resx">
       <DependentUpon>201911121104543_Added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911122008256_AddminLogin.resx">
+      <DependentUpon>201911122008256_AddminLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911131144105_Customer.resx">
+      <DependentUpon>201911131144105_Customer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
