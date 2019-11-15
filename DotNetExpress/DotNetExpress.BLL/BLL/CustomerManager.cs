@@ -16,9 +16,17 @@ namespace DotNetExpress.BLL.BLL
         {
             return _customerRepository.Add(customer);
         }
-        public List<Customer>GetAll()
+        public bool Delete(int id)
         {
-            return _customerRepository.GetAll();
+            return _customerRepository.Delete(id);
+        }
+        public bool Update(Customer customer)
+        {
+            return _customerRepository.Update(customer);
+        }
+        public List<Customer>AllCustom()
+        {
+            return _customerRepository.AllCustomer();
         }
     }
 }

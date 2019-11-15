@@ -21,9 +21,13 @@ namespace DotNetExpress
            
             Mapper.Initialize(cfg =>
             {
+                //CustomerViewModel, Customer Congigure
                 cfg.CreateMap<CustomerViewModel, Customer>();
                 cfg.CreateMap<Customer, CustomerViewModel>();
 
+                //CategoryViewModel, Category Congigure
+                cfg.CreateMap<CategoryViewModel, Category>();
+                cfg.CreateMap<Category, CategoryViewModel>();
             });
         }
     }

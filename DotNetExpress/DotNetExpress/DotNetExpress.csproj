@@ -107,6 +107,27 @@
     <Content Include="CSS\Business\Home.css" />
     <Content Include="Global.asax" />
     <Content Include="Image\logo.png" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Theme\css\style.css" />
+    <Content Include="Theme\images\arrows.png" />
+    <Content Include="Theme\images\background.jpg" />
+    <Content Include="Theme\images\bar.jpg" />
+    <Content Include="Theme\images\heading.jpg" />
+    <Content Include="Theme\images\loading.gif" />
+    <Content Include="Theme\images\slide1.jpg" />
+    <Content Include="Theme\images\slide2.jpg" />
+    <Content Include="Theme\images\water.jpg" />
+    <Content Include="Theme\js\jquery.easing.min.js" />
+    <Content Include="Theme\js\jquery.min.js" />
+    <Content Include="Theme\js\jquery.nivo.slider.pack.js" />
+    <Content Include="Theme\js\modernizr-1.5.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +138,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\CategoryViewModel.cs" />
     <Compile Include="Model\CustomerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -124,7 +146,6 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Category\GetAll.cshtml" />
-    <Content Include="Views\Category\Update.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Category\Search.cshtml" />
     <Content Include="Views\Category\Add.cshtml" />
@@ -132,6 +153,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Customer\Add.cshtml" />
     <Content Include="Views\Customer\AllCustomer.cshtml" />
+    <Content Include="Views\Shared\MasterPage\_Home.cshtml" />
+    <Content Include="Views\Shared\MasterPage\_Layout.cshtml" />
+    <Content Include="Views\Shared\Category\_CategoryDetails.cshtml" />
+    <Content Include="Views\Category\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,25 @@
+﻿@model DotNetExpress.Model.CategoryViewModel
+<table>
+    <tr>
+        <th>Sl</th>
+        <th>Code</th>
+        <th>Name</th>
+    </tr>
+    @{ int i = 1;}
+
+    @foreach (var category in Model.Categories)
+    {
+        <tr>
+            <td>@(i++)</td>
+            <td>@category.Code</td>
+            <td>@category.Name</td>
+           
+            <td>
+                @Html.ActionLink("Update", "Update", "Category", new { Id = category.Id }, null)
+                @Html.ActionLink("Delete", "Edit", "Student", new { Id = category.Id }, null)
+                @Html.ActionLink("Search", "Search", "Category", new { Id = category.Id }, null)
+            </td>
+        </tr>
+    }
+
+</table>

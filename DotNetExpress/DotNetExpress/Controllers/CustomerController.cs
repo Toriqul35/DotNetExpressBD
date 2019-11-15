@@ -19,7 +19,7 @@ namespace DotNetExpress.Controllers
         {
 
             CustomerViewModel customerViewModel = new CustomerViewModel();
-            customerViewModel.Customers = _customerManager.GetAll();
+            customerViewModel.Customers = _customerManager.AllCustom();
             return View(customerViewModel);
         }
 
@@ -54,20 +54,43 @@ namespace DotNetExpress.Controllers
             }
             
                 ViewBag.Message = message;
-                customerViewModel.Customers = _customerManager.GetAll();
+                customerViewModel.Customers = _customerManager.AllCustom();
                
                 return RedirectToAction("Index", "Home");
         
         
         }
 
+        public ActionResult Update(int id)
+        {
+            CustomerManager customerManager = new CustomerManager();
+            return View(customerManager.AllCustom().Find(smodel => smodel.Id == id));
+        }
+        // POST: Student/Edit/5	
+        [HttpPost]
+        public ActionResult Update(Customer smodel)
+        {
+            try
+            {
+                CustomerManager customerManager = new CustomerManager();
+                customerManager.Update(smodel);
+                return RedirectToAction("AllCustomer","");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+
 
         public ActionResult AllCustomer(Customer customer )
         {
-
-            CustomerViewModel customerViewModel = new CustomerViewModel();
-            //customerViewModel.Customers = _customerManager.GetAll();
-            return View(customerViewModel);
+            //CustomerViewModel customerView = new CustomerViewModel();
+            CustomerManager customerManager = new CustomerManager();
+            ModelState.Clear();
+            return View(customerManager.AllCustom());
         }
     }
 }

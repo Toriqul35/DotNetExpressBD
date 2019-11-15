@@ -1,22 +1,20 @@
-﻿@model DotNetExpress.Model.CustomerViewModel
+﻿
 @{
     ViewBag.Title = "AllCustomer";
     Layout = "~/Views/Home/Home.cshtml";
 }
-
-<Center><h2>Customer Information For Business</h2> </Center>
-
-<link href="~/CSS/Business/Add.css" rel="stylesheet" type="text/css" />
+<link href="~/CSS/Business/Default/View.css" rel="stylesheet" type="text/css" />
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<center><h2>Customer Information</h2> </center>
 
-<!DOCTYPE html>
-<html>
-<head> </head>
-<body>
-    <div>
-        <table>
+
+
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+        <table class="table table-striped custab">
+           
             <tr>
                 <th>Sl</th>
                 <th>Code</th>
@@ -25,29 +23,32 @@
                 <th>Email</th>
                 <th>Contact</th>
                 <th>Loyolty_Point</th>
+                <th></th>
             </tr>
-            @{ int i = 1;}
-            @foreach (var customer in Model.Customers)
+                @{ int i = 1;}
+                @foreach (var customer in Model)
 
-            {
-                <tr>
-                    <td>@(i++)</td>
-                    <td>@customer.Code</td>
-                    <td>@customer.Name</td>
-                    <td>@customer.Address</td>
-                    <td>@customer.Email</td>
-                    <td>@customer.Contact</td>
-                    <td>@customer.Loyolty_Point</td>
+                {
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@customer.Code</td>
+                        <td>@customer.Name</td>
+                        <td>@customer.Address</td>
+                        <td>@customer.Email</td>
+                        <td>@customer.Contact</td>
+                        <td>@customer.Loyolty_Point</td>
 
-                    <td class="text-center">
-                        <a class='btn btn-info btn-xs' href="/Customer/Add"><span class="glyphicon glyphicon-edit"></span>Update</a>
-                        <a class="btn btn-danger btn-xs" href="/Customer/Add"><span class="glyphicon glyphicon-remove"></span>Delete</a>
-                        @*<a class='btn btn-info btn-xs' @Html.ActionLink("Edit", "Update", new { id = Model.Id })></a>*@
-                    </td>
-                </tr>
-            }
+                        <td class="text-center">
+                            <a class='btn btn-info btn-xs' href="/Customer/Add"><span class="glyphicon glyphicon-edit"></span>Update</a>
+                            <a class="btn btn-danger btn-xs" href="/Customer/Add"><span class="glyphicon glyphicon-remove"></span>Delete</a>
+                            @*<a class='btn btn-info btn-xs' @Html.ActionLink("Edit", "Update", new { id = Model.Id })></a>*@
+                        </td>
 
-        </table>
+                    </tr>
+                }
+
+
+            </table>
     </div>
-</body>
-</html>
+
+    </div>

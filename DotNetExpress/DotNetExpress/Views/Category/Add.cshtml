@@ -1,53 +1,80 @@
-﻿@model DotNetExpress.Model.Model.Category
-@{
-    Layout = "~/Views/Home/Home.cshtml";
+﻿@model DotNetExpress.Model.CategoryViewModel
 
+@{
+    Layout = "~/Views/Shared/MasterPage/_Layout.cshtml";
 }
+
 
 <!DOCTYPE html>
 
-<html>
-<head>
-    <link href="~/CSS/Business/Category/Add.css" rel="stylesheet" type="text/css" />
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <meta name="viewport" content="width=device-width" />
-    <title>Add</title>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Add</title>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
 
-</head>
-<body>
-    <div class="menu">
-        <form method="post">
-            <table>
-                <tr>
-                    <td>Code</td>
-                    <td><input Class="td" type="text" name="Code" value="@Model.Code" /></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Name</td>
-                    <td><input  Class="td"  type="text" name="Name" value="@Model.Name" /></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input  class='btn btn-info btn-xs' type="submit" value="Add" /></td>
-                    <td>
-                        @if (ViewBag.Message != null)
-                        {
-                            <h3>
-                                <b>
-                                    @ViewBag.Message
-                                </b>
-                            </h3>
-                        }
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
 
-                    </td>
-                </tr>
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+        </style>
+    </head>
+    <body>
 
-            </table>
-        </form>
-    </div>
+
+
+<div>
+    <form method="post">
+        <table>
+            <tr>
+                <td>@Html.LabelFor(c => c.Code)</td>
+                <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                <td>@Html.ValidationMessageFor(c => c.Code)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Name)</td>
+                <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                <td>@Html.ValidationMessageFor(c => c.Name)</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Create" /></td>
+                <td>
+                    @if (ViewBag.Message != null)
+                    {
+                        <h3>
+                            <b>
+                                @ViewBag.Message
+                            </b>
+                        </h3>
+                    }
+
+                </td>
+            </tr>
+
+        </table>
+    </form>
+    @{
+
+        Html.RenderPartial("~/Views/Shared/Category/_CategoryDetails.cshtml", Model);
+    }
+
+</div>
+
+
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
 </body>
 </html>
