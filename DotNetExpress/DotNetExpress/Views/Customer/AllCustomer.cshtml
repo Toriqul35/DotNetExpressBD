@@ -1,54 +1,53 @@
-﻿
+﻿@model IEnumerable<DotNetExpress.Model.Model.Customer>
 @{
-    ViewBag.Title = "AllCustomer";
-    Layout = "~/Views/Home/Home.cshtml";
+    ViewBag.Title = "Add";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/CSS/Business/Default/View.css" rel="stylesheet" type="text/css" />
+
+<link href="~/CSS/Business/Category/View.css" rel="stylesheet" type="text/css" />
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<center><h2>Customer Information</h2> </center>
+<div class="tab">
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-2 custyle">
+            <input id="myInput" type="text" placeholder="Search..">
+            <table class="table table-striped custab">
+                <thead>
+                    <a class="btn btn-primary btn-xs pull-right" @Html.ActionLink("Add New Category", "Add", "Customer")></a>
+                    <tr>
+                        <th> @Html.DisplayNameFor(model => model.Code)</th>
+                        <th> @Html.DisplayNameFor(model => model.Name)</th>
+                        <th> @Html.DisplayNameFor(model => model.Address)</th>
+                        <th> @Html.DisplayNameFor(model => model.Email)</th>
+                        <th> @Html.DisplayNameFor(model => model.Contact)</th>
+                        <th> @Html.DisplayNameFor(model => model.Loyolty_Point)</th>
 
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
 
-
-<div class="container">
-    <div class="row col-md-6 col-md-offset-2 custyle">
-        <table class="table table-striped custab">
-           
-            <tr>
-                <th>Sl</th>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Email</th>
-                <th>Contact</th>
-                <th>Loyolty_Point</th>
-                <th></th>
-            </tr>
-                @{ int i = 1;}
-                @foreach (var customer in Model)
-
+                @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@(i++)</td>
-                        <td>@customer.Code</td>
-                        <td>@customer.Name</td>
-                        <td>@customer.Address</td>
-                        <td>@customer.Email</td>
-                        <td>@customer.Contact</td>
-                        <td>@customer.Loyolty_Point</td>
+                        <td> @Html.DisplayFor(modelItem => item.Code)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Name)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Address)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Email)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Contact)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Loyolty_Point)</td>
+
 
                         <td class="text-center">
-                            <a class='btn btn-info btn-xs' href="/Customer/Add"><span class="glyphicon glyphicon-edit"></span>Update</a>
-                            <a class="btn btn-danger btn-xs" href="/Customer/Add"><span class="glyphicon glyphicon-remove"></span>Delete</a>
-                            @*<a class='btn btn-info btn-xs' @Html.ActionLink("Edit", "Update", new { id = Model.Id })></a>*@
+                            <a class='btn btn-info btn-xs' @Html.ActionLink("Edit", "Update", new { id = item.Id })></a>
+                            <a class="btn btn-danger btn-xs" @Html.ActionLink("Delete", "Delete", new { id = item.Id })></a>
                         </td>
-
                     </tr>
+
                 }
 
-
             </table>
+        </div>
     </div>
-
-    </div>
+</div>

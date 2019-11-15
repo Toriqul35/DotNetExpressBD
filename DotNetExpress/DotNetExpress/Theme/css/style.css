@@ -340,3 +340,7 @@ a.nivo-nextNav {
 
 #footer a:hover
 { text-decoration: none;}
+
+ul li ul li {
+    display: none;
+}

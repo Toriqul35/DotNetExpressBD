@@ -4,20 +4,21 @@
         <th>Sl</th>
         <th>Code</th>
         <th>Name</th>
+        <th>Action</th>
+
     </tr>
     @{ int i = 1;}
-
-    @foreach (var category in Model.Categories)
+    @foreach (var student in Model.Categories)
     {
         <tr>
             <td>@(i++)</td>
-            <td>@category.Code</td>
-            <td>@category.Name</td>
-           
+            <td>@student.Code</td>
+            <td>@student.Name</td>
+            
+            
             <td>
-                @Html.ActionLink("Update", "Update", "Category", new { Id = category.Id }, null)
-                @Html.ActionLink("Delete", "Edit", "Student", new { Id = category.Id }, null)
-                @Html.ActionLink("Search", "Search", "Category", new { Id = category.Id }, null)
+                @Html.ActionLink("Update", "Update", "Category", new { Id = student.Id },new { @class = "btn btn-info btn-xs" })
+                @Html.ActionLink("Delete", "Delete", "Category", new { Id = student.Id },new { @class = "btn btn-danger btn-xs" })
             </td>
         </tr>
     }

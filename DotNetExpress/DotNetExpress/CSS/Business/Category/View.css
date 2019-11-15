@@ -10,3 +10,14 @@
         box-shadow: 3px 3px 0px transparent;
         transition: 0.5s;
     }
+.tab{
+    width : 700px;
+}
+.bt 
+{
+    background-color: #f44336;
+}
+.head {
+    color: darkgreen
+  
+}

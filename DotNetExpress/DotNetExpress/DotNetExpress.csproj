@@ -146,6 +146,7 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Category\GetAll.cshtml" />
+    <Content Include="Views\Category\Update.cshtml" />
     <Content Include="Views\Category\Delete.cshtml" />
     <Content Include="Views\Category\Search.cshtml" />
     <Content Include="Views\Category\Add.cshtml" />
@@ -153,10 +154,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Customer\Add.cshtml" />
     <Content Include="Views\Customer\AllCustomer.cshtml" />
-    <Content Include="Views\Shared\MasterPage\_Home.cshtml" />
-    <Content Include="Views\Shared\MasterPage\_Layout.cshtml" />
+    <Content Include="Views\Customer\Update.cshtml" />
+    <Content Include="Views\Shared\_Home.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\Category\_CategoryDetails.cshtml" />
-    <Content Include="Views\Category\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -13,13 +13,13 @@ namespace DotNetExpress.Controllers
     public class CustomerController : Controller
     {
         CustomerManager _customerManager = new CustomerManager();
-        
+
         [HttpGet]
         public ActionResult Add()
         {
 
             CustomerViewModel customerViewModel = new CustomerViewModel();
-            customerViewModel.Customers = _customerManager.AllCustom();
+            customerViewModel.Customers = _customerManager.GetAll();
             return View(customerViewModel);
         }
 
@@ -39,58 +39,72 @@ namespace DotNetExpress.Controllers
             {
                 Customer customer = Mapper.Map<Customer>(customerViewModel);
 
-              if (_customerManager.Add(customer))
+                if (_customerManager.Add(customer))
                 {
                     message = "Saved";
                 }
-                  else
-                   {
-                       message = "Not Saved";
-                   }
+                else
+                {
+                    message = "Not Saved";
+                }
             }
             else
             {
                 message = "ModelState Failed";
             }
-            
-                ViewBag.Message = message;
-                customerViewModel.Customers = _customerManager.AllCustom();
-               
-                return RedirectToAction("Index", "Home");
-        
-        
+
+            ViewBag.Message = message;
+            customerViewModel.Customers = _customerManager.GetAll();
+
+            return RedirectToAction("Index", "Home");
+
+
         }
 
-        public ActionResult Update(int id)
+
+        public ActionResult AllCustomer(Customer customer)
         {
-            CustomerManager customerManager = new CustomerManager();
-            return View(customerManager.AllCustom().Find(smodel => smodel.Id == id));
+            CustomerManager _customerManager = new CustomerManager();
+            ModelState.Clear();
+            return View(_customerManager.GetAll());
         }
-        // POST: Student/Edit/5	
-        [HttpPost]
-        public ActionResult Update(Customer smodel)
+
+        public ActionResult Delete(int id)
         {
             try
             {
-                CustomerManager customerManager = new CustomerManager();
-                customerManager.Update(smodel);
-                return RedirectToAction("AllCustomer","");
+                CustomerManager _customerManager = new CustomerManager();
+                if (_customerManager.Delete(id))
+                {
+                    ViewBag.AlertMsg = "Student Deleted Successfully";
+                }
+                return RedirectToAction("AllCustomer");
             }
             catch
             {
                 return View();
             }
+
         }
-
-
-
-
-        public ActionResult AllCustomer(Customer customer )
+        [HttpGet]
+        public ActionResult Update(int id)
         {
-            //CustomerViewModel customerView = new CustomerViewModel();
             CustomerManager customerManager = new CustomerManager();
-            ModelState.Clear();
-            return View(customerManager.AllCustom());
+             return View(customerManager.Add().Find(smodel => smodel.Id == id));
+        }
+        [HttpPost]
+        public ActionResult Update(int id, Customer smodel)
+        {
+            try
+            {
+                CustomerManager customerManager = new CustomerManager();
+                customerManager.Update(smodel);
+                return RedirectToAction("AllCustomer");
+            }
+            catch
+            {
+                return View();
+            }
         }
     }
 }

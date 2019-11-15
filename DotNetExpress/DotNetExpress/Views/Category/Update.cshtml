@@ -1,17 +1,69 @@
-﻿
+﻿@model DotNetExpress.Model.CategoryViewModel
 @{
-    Layout = "~/Views/Shared/MasterPage/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
+@section MyStyle
+{
+    <link href="~/CSS/Business/Category/Add.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <meta name="viewport" content="width=device-width" />
-    <title>Update</title>
-</head>
-<body>
-    <div> 
+    <title>Add</title>
+
+}
+<center>
+    <h2 style="color:green"> Update Any Categoey Item</h2>
+    <div class="menu">
+        <table>
+            <tr>
+                <td>
+
+                    <a href="~/Category/GetAll"><input class='btn btn-info btn-xs' type="submit" value="View Category" /></a>
+                    <a href="~/Category/Add"><input class='btn btn-info btn-xs' type="submit" value="New Create" /></a>
+                </td>
+            </tr>
+        </table>
     </div>
-</body>
-</html>
+    <div class="menu">
+        <form method="post">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Code)</td>
+                    <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Code)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Name)</td>
+                    <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Name)</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input class='btn btn-info btn-xs' type="submit" value="Update" /></td>
+                    <td>
+                        @if (ViewBag.Message != null)
+                        {
+                            <h3>
+                                <b>
+                                    @ViewBag.Message
+                                </b>
+                            </h3>
+                        }
+
+                    </td>
+                </tr>
+
+            </table>
+        </form>
+    </div>
+</center>
+    @section MyScript
+    {
+
+        <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    }

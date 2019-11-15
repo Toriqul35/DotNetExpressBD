@@ -16,7 +16,6 @@ namespace DotNetExpress.Model
         [MaxLength(4, ErrorMessage = "Maximum Lenght is 4")]
         [Display(Name = "Code : ")]
         public string Code { get; set; }
-
         [Required(ErrorMessage = "Please input Name ")]
         public string Name { get; set; }
 

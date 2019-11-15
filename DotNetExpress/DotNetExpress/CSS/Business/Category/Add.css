@@ -3,11 +3,9 @@
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    
 }
 
 td, th {
-    color:red;
     border: 1px solid #dddddd;
     text-align: left;
     padding: 13px;
@@ -15,15 +13,15 @@ td, th {
 
 tr:nth-child(even) {
     background-color: #dddddd;
-    color: blueviolet;
 }
 .menu{
     
-    width:570px;
-   margin-left:40px;
+    width:500px;
+    margin-top: 40px;
+    
 }
 .Heading{
-    margin-left:130PX;
+    margin-left:120PX;
     color:red;
     position:center;
     font-size: 15px;
@@ -31,7 +29,4 @@ tr:nth-child(even) {
 }
 .td{
     height:20px;
-}
-.addcategry{
-    margin-top : 100px;
 }

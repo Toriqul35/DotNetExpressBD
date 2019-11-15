@@ -2,42 +2,59 @@
 @{
     ViewBag.Title = "Add";
 
-    Layout = "~/Views/Home/Home.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/CSS/Business/Category/View.css" rel="stylesheet" type="text/css" />
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+@section MyStyle
+{
+    <link href="~/CSS/Business/Category/View.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+}
 
-<div class="container">
-    <div class="row col-md-6 col-md-offset-2 custyle">
-        <input id="myInput" type="text" placeholder="Search..">
-        <table class="table table-striped custab">
-            <thead>
-                <a href="/Category/Add" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a>
-                <tr>
-                    <th> @Html.DisplayNameFor(model => model.Code)</th>
-                    <th> @Html.DisplayNameFor(model => model.Name)</th>
-                    <th class="text-center">Action</th>
-                </tr>
-            </thead>
+    <h2 class="head" style="margin-left:500px"> All Categoey</h2>
+    <center>
+        <div class="container">
+            <div class="row col-md-6 col-md-offset-2 custyle">
+                <table class="table table-striped custab">
+                    <thead>
+                        <a href="~/category/Add" class="btn btn-primary btn-xs pull-right"><b>+</b>Add new categories </a>
+                        <a href="~/category/Search" class="btn btn-primary btn-xs pull-right"><b>+</b> Search Item </a>
+                    </thead>
+                    <tr>
+                        <th>SI</th>
+                        <th> @Html.DisplayNameFor(model => model.Code)</th>
+                        <th> @Html.DisplayNameFor(model => model.Name)</th>
 
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td> @Html.DisplayFor(modelItem => item.Code)</td>
-                    <td> @Html.DisplayFor(modelItem => item.Name)</td>
+                        <th class="text-center">Action</th>
+                    </tr>
+
+                    @{ int i = 1;}
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                             <td>@(i++)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Code)</td>
+                            <td> @Html.DisplayFor(modelItem => item.Name)</td>
 
 
-                    <td class="text-center">
-                        @*<a class='btn btn-info btn-xs' href="/Category/Update"><span class="glyphicon glyphicon-edit"></span>Update</a>*@
-                        @Html.ActionLink("Edit", "Update", new { id = item.Id })
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                    </td>
-                </tr>
+                            <td class="text-center">
 
-            }
+                                @Html.ActionLink("Update", "Update", new { id = item.Id }, new { @class = "btn btn-info btn-xs" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
 
-        </table>
-    </div>
-</div>
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+        </div>
+    </center>
+@section MyScript
+    {
+
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

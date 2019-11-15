@@ -16,6 +16,10 @@ namespace DotNetExpress.BLL.BLL
         {
             return _customerRepository.Add(customer);
         }
+        public List<Customer>GetAll()
+        {
+            return _customerRepository.GetAll();
+        }
         public bool Delete(int id)
         {
             return _customerRepository.Delete(id);
@@ -24,9 +28,9 @@ namespace DotNetExpress.BLL.BLL
         {
             return _customerRepository.Update(customer);
         }
-        public List<Customer>AllCustom()
+        public List<Customer> Add()
         {
-            return _customerRepository.AllCustomer();
+            return _customerRepository.GetAll();
         }
     }
 }

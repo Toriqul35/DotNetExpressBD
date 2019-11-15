@@ -2,45 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using DotNetExpress.Model;
+using AutoMapper;
 using System.Web.Mvc;
+using DotNetExpress.Model;
 using DotNetExpress.BLL.BLL;
 using DotNetExpress.Model.Model;
-using AutoMapper;
 
 namespace DotNetExpress.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoryManager _categoryManager = new CategoryManager();
-       CategoryViewModel _categoryViewModel = new CategoryViewModel();
+        CategoryManager _CategoryManager = new CategoryManager();
+
 
         [HttpGet]
         public ActionResult Add()
         {
-            CategoryViewModel categoryViewModel = new CategoryViewModel();
-            categoryViewModel.Categories = _categoryManager.GetAll();
-
-            return View(categoryViewModel);
+            CategoryViewModel _categoryViewModel = new CategoryViewModel();
+            _categoryViewModel.Categories = _CategoryManager.Add();
+            return View(_categoryViewModel);
         }
 
         [HttpPost]
-        public ActionResult Add(Category category)
+        public ActionResult Add(CategoryViewModel categoryViewModel)
         {
-            string message = "";
-
-            //message += "Roll No:" + student.RollNo;
-            //message += "<br / > Name:" + student.Name;
-            //message += "<br / > Address:" + student.Address;
-            //message += "<br / > Age:" + student.Age;
-            //message += "<br / > Department:" + student.DepartmentId;
-
+            string message = " ";
             if (ModelState.IsValid)
             {
-                Category category1 = Mapper.Map<Category>(_categoryViewModel);
+                Category category = Mapper.Map<Category>(categoryViewModel);
 
-
-                if (_categoryManager.Add(category))
+                if (_CategoryManager.Add(category))
                 {
                     message = "Saved";
                 }
@@ -53,42 +44,42 @@ namespace DotNetExpress.Controllers
             {
                 message = "Create Failed";
             }
-            
-                ViewBag.Message = message;
-               _categoryViewModel.Categories = _categoryManager.GetAll();
+            ViewBag.Message = message;
+            categoryViewModel.Categories = _CategoryManager.Add();
+            return View(categoryViewModel);
+        }
 
-                return RedirectToAction("Index", "Home");
-
-            }
-        
-    public ActionResult GetAll(Category category)
+        public ActionResult GetAll(Category category)
         {
             CategoryManager categoryManager = new CategoryManager();
             ModelState.Clear();
-            return View(categoryManager.GetAll());
+            return View(categoryManager.Add());
         }
 
         [HttpGet]
         public ActionResult Update(int id)
-
         {
-            var category = _categoryManager.GetAll();
-            CategoryViewModel _categoryViewModel = Mapper.Map<CategoryViewModel>(category);
-            _categoryViewModel.Categories = _categoryManager.GetAll();
 
-            return View(_categoryViewModel);
+            var category = _CategoryManager.GetById(id);
+            CategoryViewModel categoryViewModel = Mapper.Map<CategoryViewModel>(category);
+            categoryViewModel.Categories = _CategoryManager.Add();
+
+            return View(categoryViewModel);
+            //CategoryManager categoryManager = new CategoryManager();
+            //return View(categoryManager.Add().Find(smodel => smodel.Id == id));
         }
-        // POST: Category Update	
+        // POST: Student/Edit/5	
         [HttpPost]
-        public ActionResult Update(CategoryViewModel categoryViewModel )
+        public ActionResult Update(CategoryViewModel categoryViewModel)
         {
             string message = "";
+
 
             if (ModelState.IsValid)
             {
                 Category category = Mapper.Map<Category>(categoryViewModel);
 
-                if (_categoryManager.Update(category))
+                if (_CategoryManager.Update(category))
                 {
                     message = "Updated";
                 }
@@ -103,10 +94,21 @@ namespace DotNetExpress.Controllers
             }
 
             ViewBag.Message = message;
-            categoryViewModel.Categories = _categoryManager.GetAll();
-
+            categoryViewModel.Categories = _CategoryManager.Add();
             return View(categoryViewModel);
         }
+
+        //try
+        //{
+        //    CategoryManager categoryManager = new CategoryManager();
+        //    categoryManager.Update(smodel);
+        //    return RedirectToAction("GetAll");
+        //}
+        //catch
+        //{
+        //    return View();
+        //}
+        //  }
         public ActionResult Delete(int id)
         {
             try
@@ -127,33 +129,32 @@ namespace DotNetExpress.Controllers
         [HttpGet]
         public ActionResult Search()
         {
+            
             CategoryViewModel categoryViewModel = new CategoryViewModel();
-            categoryViewModel.Categories = _categoryManager.GetAll();
-
+            categoryViewModel.Categories = _CategoryManager.Add();
 
             return View(categoryViewModel);
-
         }
-
         [HttpPost]
         public ActionResult Search(CategoryViewModel categoryViewModel)
         {
-            var Categories = _categoryManager.GetAll();
+            var category = _CategoryManager.Add();
 
-            if (categoryViewModel.Code != null)
+            if(categoryViewModel.Code != null)
             {
-                Categories = Categories.Where(c => c.Code.Contains(categoryViewModel.Code)).ToList();
-            }
-            if (categoryViewModel.Name != null)
-            {
-                Categories = Categories.Where(c => c.Name.ToLower().Contains(categoryViewModel.Name.ToLower())).ToList();
-            }
+                category = category.Where(c => c.Code.Contains(categoryViewModel.Code)).ToList();
 
-            
+            }
+             if (categoryViewModel.Name != null)
+             {
+                category = category.Where(c => c.Name.ToLower().Contains(categoryViewModel.Name.ToLower())).ToList();
+             }
+
+              categoryViewModel.Categories = category;
+
             return View(categoryViewModel);
+
         }
 
     }
 }
-
-    
