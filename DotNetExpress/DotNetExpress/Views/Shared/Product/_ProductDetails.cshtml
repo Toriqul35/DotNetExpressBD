@@ -1,0 +1,30 @@
+﻿
+@model DotNetExpress.Model.ProductViewModel
+<table>
+    <tr>
+        <th>Sl</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>ReorderLevel</th>
+        <th>Description</th>
+        <th>Category</th>
+    </tr>
+    @{
+        int i = 1;
+    }
+    @foreach (var product in Model.products)
+    {
+        <tr>
+            <td>@(i++)</td>
+            <td>@product.Code</td>
+
+
+            <td>@product.Name</td>
+            <td>@product.ReorderLevel</td>
+            <td>@product.Description</td>
+            <td>@product.CategoryId</td>
+            <td>@Html.ActionLink("Edit", "Edit", "Product", new { Id = product.Id }, null)</td>
+        </tr>
+    }
+
+</table>

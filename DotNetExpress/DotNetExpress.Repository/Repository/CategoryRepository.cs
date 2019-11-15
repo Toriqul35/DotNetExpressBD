@@ -4,6 +4,7 @@ using System.Text;
 using System.Linq;
 using DotNetExpress.Model.Model;
 using DotNetExpress.DatabaseDbContext.DatabaseDbContext;
+using System.Data.Entity;
 
 namespace DotNetExpress.Repository.Repository
 {
@@ -36,7 +37,21 @@ namespace DotNetExpress.Repository.Repository
 
         public List<Category> GetAll()
         {
-            return _dbContext.categories.ToList();
+            var categories = _dbContext.categories.ToList();
+            foreach (var category in categories)
+            {
+                //All
+                _dbContext.Entry(category).Collection(c => c.Products).Load();
+
+                //Query
+                _dbContext.Entry(category)
+                    .Collection(c => c.Products)
+                    .Query()
+                    .Where(c => c.Name.Contains("l"))
+                    .Load();
+
+            }
+            return categories;
         }
         public Category GetById(int id)
         {

@@ -27,6 +27,10 @@ namespace DotNetExpress.BLL.BLL
         {
             return _categoryRepository.GetAll();
         }
+        public List<Category> GetAll()
+        {
+            return _categoryRepository.GetAll();
+        }
         public Category GetById(int id)
         {
             return _categoryRepository.GetById(id);

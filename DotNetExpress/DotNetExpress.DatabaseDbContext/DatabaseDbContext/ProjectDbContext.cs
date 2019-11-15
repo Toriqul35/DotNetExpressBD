@@ -17,6 +17,7 @@ namespace DotNetExpress.DatabaseDbContext.DatabaseDbContext
          public DbSet<Admin_Login> Admin_Logins { set; get; }
          public DbSet<Category> categories { set; get; }
          public DbSet<Customer> Customers{ set; get; }
+         public DbSet<Product> products { get; set; }
 
     }
 }

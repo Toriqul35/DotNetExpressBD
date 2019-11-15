@@ -1,0 +1,86 @@
+﻿@using System.Collections.Specialized
+@model DotNetExpress.Model.ProductViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section MyStyle
+{
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+}
+
+<div>
+    <h2>Product Information</h2>
+
+    <form method="post">
+        <table>
+            <tr>
+                <td>@Html.LabelFor(c => c.Code)</td>              
+                <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                <td>@Html.ValidationMessageFor(c => c.Code)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Name)</td>            
+                <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                <td>@Html.ValidationMessageFor(c => c.Name)</td>
+            </tr>
+            <tr>
+                <td>ReorderLevel:</td>
+                <td><input type="text" name="ReorderLevel" value="@Model.ReorderLevel" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><input type="text" name="Description" value="@Model.Description" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Category:</td>                
+                <td>@Html.DropDownListFor(c => c.CategoryId, Model.CategorySelectListItems, "--Select--")</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save" /></td>
+                
+                <td>
+                    @if (ViewBag.Message != null)
+                    {
+                        <h2>@ViewBag.Message</h2>
+                    }
+                </td>
+            </tr>
+        </table>
+    </form>
+    @{
+        Html.RenderPartial("~/Views/Shared/Product/_ProductDetails.cshtml", Model);
+    }
+
+</div>
+
+
+@section MyScript
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+@*</body>
+    </html>*@
