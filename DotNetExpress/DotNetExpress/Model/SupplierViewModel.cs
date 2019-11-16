@@ -21,7 +21,9 @@ namespace DotNetExpress.Model
         public string Name { get; set; }
 
         public string Address { get; set; }
-        [Required(ErrorMessage = "What is Email ?")]
+       
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         //[Remote("CheckExist", "Supplier", ErrorMessage = "The Code is exists")]
         public string Email { get; set; }
         [Required(ErrorMessage = "What is Cell Number ? ")]

@@ -15,37 +15,40 @@
 
 }
 <center>
-    <div class="menu">
+    <h2 style="color:darkgreen; margin-top:-15px"> Search Any Supplier </h2>
+    <div class="menu" style="margin-left:-120px; margin-top:-10px">
         <table>
             <tr>
                 <td>
+                    <a href="~/Supplier/Add"><input class='btn btn-info btn-xs' type="submit" value="Create new Supplier"/></a>
                     <a href="~/Supplier/ViewSupplier"><input class='btn btn-info btn-xs' type="submit" value="View Supplier" /></a>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="menu">
+</center>
+    <div class="menu" style="margin-left:375px"px>
         <form method="post">
             <table>
                 <tr>
                     <td>@Html.LabelFor(c => c.Name)</td>
-                    <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                    <td>@Html.TextBoxFor(c => c.Name, Model.Name,new { @placehoder="Input Name"})</td>
                     <td>@Html.ValidationMessageFor(c => c.Name)</td>
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(c => c.Email)</td>
-                    <td>@Html.TextBoxFor(c => c.Email, Model.Email)</td>
+                    <td>@Html.TextBoxFor(c => c.Email, Model.Email, new { @placehoder="Input valid email" })</td>
                     <td>@Html.ValidationMessageFor(c => c.Email)</td>
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(c => c.Contact)</td>
-                    <td>@Html.TextBoxFor(c => c.Contact, Model.Contact)</td>
+                    <td>@Html.TextBoxFor(c => c.Contact, Model.Contact, new { @placehoder="Cell Number" })</td>
                     <td>@Html.ValidationMessageFor(c => c.Contact)</td>
                 </tr>
-                
+
                 <tr>
                     <td> Action </td>
-                    <td><input class='btn btn-info btn-xs' type="submit" value="Create" /></td>
+                    <td><input class='btn btn-info btn-xs' type="submit" value="Search" /></td>
                     <td>
                         @if (ViewBag.Message != null)
                         {
@@ -72,20 +75,20 @@
                 @foreach (var customer in Model.Suppliers)
 
                 {
-            <tr>
-                <td>@(i++)</td>
-                <td>@customer.Code</td>
-                <td>@customer.Name</td>
-                <td>@customer.Address</td>
-                <td>@customer.Email</td>
-                <td>@customer.Contact</td>
-                <td>@customer.Contact_Person</td>
-            </tr>
+                    <tr>
+                        <td>@(i++)</td>
+                        <td>@customer.Code</td>
+                        <td>@customer.Name</td>
+                        <td>@customer.Address</td>
+                        <td>@customer.Email</td>
+                        <td>@customer.Contact</td>
+                        <td>@customer.Contact_Person</td>
+                    </tr>
                 }
             </table>
         </form>
     </div>
-</center>
+
 @section MyScript
     {
 

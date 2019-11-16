@@ -10,8 +10,8 @@ namespace DotNetExpress.Model
     public class ProductViewModel
     {
         public int Id { get; set; }
-        
 
+        [Remote("CheckExist", "Product", ErrorMessage = "The Code is exists")]
         [Required(ErrorMessage = "Can not be Empty")]
         [MaxLength(6, ErrorMessage = "Maximum Lenght is 6")]
         [MinLength(4, ErrorMessage = "Must be 4 Lenght")]

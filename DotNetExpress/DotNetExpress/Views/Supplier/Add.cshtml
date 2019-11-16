@@ -15,67 +15,70 @@
 
 }
 <center>
-    <h2 style="color:darkgreen"> Create New Supplier </h2>
+    <h2 style="color:darkgreen; margin-top:-14px;margin-left:-70px"> Create New Supplier </h2>
 </center>
-<div class="menu">
-    <table>
-        <tr>
-            <td>
-                <a href="~/Supplier/ViewSupplier"><input class='btn btn-info btn-xs' type="submit" value="View Supplier" /></a>
-            </td>
-        </tr>
-    </table>
-</div>
-<div class="menu">
-    <form method="post">
+    <div class="menu"style="margin-top:-10px; margin-left:350px">
         <table>
             <tr>
-                <td>@Html.LabelFor(c => c.Code)</td>
-                <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
-                <td>@Html.ValidationMessageFor(c => c.Code)</td>
-
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Name)</td>
-                <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
-                <td>@Html.ValidationMessageFor(c => c.Name)</td>
-
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Email)</td>
-                <td>@Html.TextBoxFor(c => c.Email, Model.Email)</td>
-                <td>@Html.ValidationMessageFor(c => c.Email)</td>
-
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Contact)</td>
-                <td>@Html.TextBoxFor(c => c.Contact, Model.Contact)</td>
-                <td>@Html.ValidationMessageFor(c => c.Contact)</td>
-
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Contact_Person)</td>
-                <td>@Html.TextBoxFor(c => c.Contact_Person, Model.Contact_Person)</td>
-                <td>@Html.ValidationMessageFor(c => c.Contact_Person)</td>
-
-            </tr>
-            <tr>
-                <td> Action </td>
-                <td><input class='btn btn-info btn-xs' type="submit" value="Create" /></td>
                 <td>
-                    @if (ViewBag.Message != null)
-                    {
-                        <h3>
-                            <b>
-                                @ViewBag.Message
-                            </b>
-                        </h3>
-                    }
+                    <a href="~/Supplier/Search"><input class='btn btn-info btn-xs' type="submit" value="Search" /></a>
+                    <a href="~/Supplier/ViewSupplier"><input class='btn btn-info btn-xs' type="submit" value="View Supplier" /></a>
                 </td>
             </tr>
         </table>
-    </form>
-</div>
+    </div>
+
+    <div class="menu">
+        <form method="post">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Code)</td>
+                    <td>@Html.TextBoxFor(c => c.Code, Model.Code,new { @placeholder="Code"})</td>
+                    <td>@Html.ValidationMessageFor(c => c.Code)</td>
+
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Name)</td>
+                    <td>@Html.TextBoxFor(c => c.Name, Model.Name, new { @placeholder = "Name" })</td>
+                    <td>@Html.ValidationMessageFor(c => c.Name)</td>
+
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Email)</td>
+                    <td>@Html.TextBoxFor(c => c.Email, Model.Email, new { @placeholder = "Valid Email" })</td>
+                    <td>@Html.ValidationMessageFor(c => c.Email)</td>
+
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Contact)</td>
+                    <td>@Html.TextBoxFor(c => c.Contact, Model.Contact, new { @placeholder = "Cell Number" })</td>
+                    <td>@Html.ValidationMessageFor(c => c.Contact)</td>
+
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Contact_Person)</td>
+                    <td>@Html.TextBoxFor(c => c.Contact_Person, Model.Contact_Person, new { @placeholder = "Contact Person" })</td>
+                    <td>@Html.ValidationMessageFor(c => c.Contact_Person)</td>
+
+                </tr>
+                <tr>
+                    <td> Action </td>
+                    <td><input class='btn btn-info btn-xs' type="submit" value="Create" /></td>
+                    <td>
+                        @if (ViewBag.Message != null)
+                        {
+                            <h3>
+                                <b>
+                                    @ViewBag.Message
+                                </b>
+                            </h3>
+                        }
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
 @section MyScript
     {
 

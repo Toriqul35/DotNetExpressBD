@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using DotNetExpress.Model;
 using DotNetExpress.BLL.BLL;
 using DotNetExpress.Model.Model;
+using DotNetExpress.DatabaseDbContext.DatabaseDbContext;
 
 namespace DotNetExpress.Controllers
 {
@@ -14,6 +15,21 @@ namespace DotNetExpress.Controllers
     {
         ProductManager _productManager = new ProductManager();
         CategoryManager _categoryManager = new CategoryManager();
+        ProjectDbContext _dbContext = new ProjectDbContext();
+
+        public ActionResult CheckExist(string code, int? Id)
+        {
+            var validateName = _dbContext.Suppliers.FirstOrDefault
+                                (x => x.Code == code && x.Id != Id);
+            if (validateName != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
         // GET: Product
         [HttpGet]
         public ActionResult Add()

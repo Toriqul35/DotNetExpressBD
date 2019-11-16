@@ -15,18 +15,20 @@
 
 }
 <center>
-    <h2 style="color:darkgreen"> Create new Product </h2>
+    <h2 style="color:darkgreen; margin-top:-15px"> Create new Product </h2>
 </center>
-<div class="menu">
+<div class="menu" style="margin-left:370px; margin-top:-10px">
     <table>
         <tr>
             <td>
+                <a href="~/Product/Search"><input class='btn btn-info btn-xs' type="submit" value="Search" /></a>
                 <a href="~/Product/ViewProduct"><input class='btn btn-info btn-xs' type="submit" value="View Product" /></a>
             </td>
         </tr>
     </table>
 </div>
-<div class="menu">
+    
+<div class="menu" style="margin-left:370px">
     <form method="post">
         <table>
             <tr>
@@ -36,26 +38,25 @@
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Code)</td>
-                <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                <td>@Html.TextBoxFor(c => c.Code, Model.Code,new { @placeholder="Code"})</td>
                 <td>@Html.ValidationMessageFor(c => c.Code)</td>
 
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Name)</td>
-                <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                <td>@Html.TextBoxFor(c => c.Name, Model.Name, new { @placeholder = "Product Name" })</td>
                 <td>@Html.ValidationMessageFor(c => c.Name)</td>
 
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Reorder_lavel)</td>
-                <td>@Html.TextBoxFor(c => c.Reorder_lavel, Model.Reorder_lavel)</td>
+                <td>@Html.TextBoxFor(c => c.Reorder_lavel, Model.Reorder_lavel, new { @placeholder = "lavel" })</td>
                 <td>@Html.ValidationMessageFor(c => c.Reorder_lavel)</td>
 
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Description)</td>
-                <td>@Html.TextBoxFor(c => c.Description, Model.Description)</td>
-                <td>@Html.ValidationMessageFor(c => c.Description)</td>
+                <td>@Html.TextBoxFor(c => c.Description, Model.Description, new { @placeholder = "Description" })</td>
 
             </tr>
             

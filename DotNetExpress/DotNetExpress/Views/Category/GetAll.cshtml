@@ -12,49 +12,54 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 }
 
-    <h2 class="head" style="margin-left:500px"> All Categoey</h2>
-    <center>
-        <div class="menu">
-            <table>
+<h3 class="head" style="margin-left:500px"> All Categoey</h3>
+
+<div class="menu">
+    <table style="margin-left:650px" >
+        <tr>
+            <td>
+               
+                <a href="~/category/Add"><input class='btn btn-info btn-xs' type="submit" value="Add New Categories" /></a>
+                <a href="~/category/Search"><input class='btn btn-info btn-xs' type="submit" value="Search Item" /></a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<center>
+
+<div class="container">
+    <div class="row col-md-6 col-md-offset-2 custyle">
+        <table class="table table-striped custab">
+          
+            <tr>
+                <th>SI</th>
+                <th> @Html.DisplayNameFor(model => model.Code)</th>
+                <th> @Html.DisplayNameFor(model => model.Name)</th>
+
+                <th class="text-center">Action</th>
+            </tr>
+
+            @{ int i = 1;}
+            @foreach (var item in Model)
+            {
                 <tr>
-                    <td>
-                        <a href="~/category/Add"><input class='btn btn-info btn-xs' type="submit" value="Add New Categories" /></a>
-                        <a href="~/category/Search"><input class='btn btn-info btn-xs' type="submit" value="Search Item" /></a>
+                    <td>@(i++)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Code)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Name)</td>
+
+
+                    <td class="text-center">
+
+                        @Html.ActionLink("Update", "Update", new { id = item.Id }, new { @class = "btn btn-info btn-xs" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
+
                     </td>
                 </tr>
-            </table>
-        </div>
-        <div class="container">
-            <div class="row col-md-6 col-md-offset-2 custyle">
-                <table class="table table-striped custab">
-                    <tr>
-                        <th>SI</th>
-                        <th> @Html.DisplayNameFor(model => model.Code)</th>
-                        <th> @Html.DisplayNameFor(model => model.Name)</th>
-
-                        <th class="text-center">Action</th>
-                    </tr>
-
-                    @{ int i = 1;}
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>@(i++)</td>
-                            <td> @Html.DisplayFor(modelItem => item.Code)</td>
-                            <td> @Html.DisplayFor(modelItem => item.Name)</td>
-
-
-                            <td class="text-center">
-
-                                @Html.ActionLink("Update", "Update", new { id = item.Id }, new { @class = "btn btn-info btn-xs" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
-
-                            </td>
-                        </tr>
-                    }
-                </table>
-            </div>
-        </div>
+            }
+        </table>
+    </div>
+</div>
     </center>
 @section MyScript
     {

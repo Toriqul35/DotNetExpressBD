@@ -14,17 +14,20 @@
     <title>Add</title>
 
 }
+
 <center>
-    <div class="menu">
+    <h2 style="color:darkgreen; margin-top:-15px">Search Any Product</h2>
+    <div class="menu" style="margin-left:-40px; margin-top:-10px">
         <table>
             <tr>
                 <td>
+                    <a href="~/Product/Add"><input class='btn btn-info btn-xs' type="submit" value="Create new Product" /></a>
                     <a href="~/Product/ViewProduct"><input class='btn btn-info btn-xs' type="submit" value="View Product" /></a>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="menu">
+    <div class="menu" style="margin-left:-40px">
         <form method="post">
             <table>
                 <tr>
@@ -34,12 +37,12 @@
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(c => c.Code)</td>
-                    <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                    <td>@Html.TextBoxFor(c => c.Code, Model.Code, new { @placeholder = " Code" })</td>
                     <td>@Html.ValidationMessageFor(c => c.Code)</td>
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(c => c.Name)</td>
-                    <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                    <td>@Html.TextBoxFor(c => c.Name, Model.Name, new { @placeholder = "Product Code" })</td>
                     <td>@Html.ValidationMessageFor(c => c.Name)</td>
                 </tr>
                 <tr>
@@ -66,10 +69,10 @@
                     <th>Description</th>
                     <th>Category</th>
                 </tr>
-               @{ int i = 1;}
+                @{ int i = 1;}
                 @foreach (var customer in Model.Products)
 
-                 {
+                {
                     <tr>
                         <td>@(i++)</td>
                         <td>@customer.Code</td>
@@ -78,7 +81,7 @@
                         <td>@customer.Description</td>
                         <td>@customer.CategoryId</td>
                     </tr>
-                 }
+                }
             </table>
         </form>
     </div>

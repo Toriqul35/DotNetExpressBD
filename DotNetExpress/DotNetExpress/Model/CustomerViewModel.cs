@@ -12,6 +12,7 @@ namespace DotNetExpress.Model
     {
         public int Id { get; set; }
 
+        [Remote("CheckExist", "Product", ErrorMessage = "The Code is exists")]
         [Required(ErrorMessage = "Can not be Empty")]
         [MaxLength(6, ErrorMessage = "Maximum Lenght is 6")]
         [MinLength(4, ErrorMessage = "Must be 4 Lenght")]
@@ -21,7 +22,8 @@ namespace DotNetExpress.Model
         public string Name { get; set; }
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Please input email Address")]
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please fill up Contact")]

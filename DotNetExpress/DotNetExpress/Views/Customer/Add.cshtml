@@ -15,12 +15,13 @@
 
 }
 <center>
-    <h2 style="color:darkgreen"> Create new Customer </h2>
+    <h2 style="color:darkgreen; margin-top:-15px; margin-left: -110px"> Create new Customer </h2>
 </center>
-<div class="menu">
+<div class="menu" style="margin-top:-10px">
     <table>
         <tr>
             <td>
+                <a href="~/Customer/Search"><input class='btn btn-info btn-xs' type="submit" value="Search Customer" /></a>
                 <a href="~/Customer/AllCustomer"><input class='btn btn-info btn-xs' type="submit" value="View Customer" /></a>
             </td>
         </tr>
@@ -31,37 +32,37 @@
         <table>
             <tr>
                 <td>@Html.LabelFor(c => c.Code)</td>
-                <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                <td>@Html.TextBoxFor(c => c.Code, Model.Code, new { @placeholder = "Category Code" })</td>
                 <td>@Html.ValidationMessageFor(c => c.Code)</td>
 
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Name)</td>
-                <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                <td>@Html.TextBoxFor(c => c.Name, Model.Name, new { @placeholder = "Customer Name" })</td>
                 <td>@Html.ValidationMessageFor(c => c.Name)</td>
 
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Address)</td>
-                <td>@Html.TextBoxFor(c => c.Address, Model.Address)</td>
+                <td>@Html.TextBoxFor(c => c.Address, Model.Address, new { @placeholder = "Customer Address" })</td>
                 
 
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Email)</td>
-                <td>@Html.TextBoxFor(c => c.Email, Model.Email)</td>
+                <td>@Html.TextBoxFor(c => c.Email, Model.Email, new { @placeholder = "Email Address" })</td>
                 <td>@Html.ValidationMessageFor(c => c.Email)</td>
 
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Contact)</td>
-                <td>@Html.TextBoxFor(c => c.Contact, Model.Contact)</td>
+                <td>@Html.TextBoxFor(c => c.Contact, Model.Contact, new { @placeholder = "Cell Number" })</td>
                 <td>@Html.ValidationMessageFor(c => c.Contact)</td>
 
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Loyolty_Point)</td>
-                <td>@Html.TextBoxFor(c => c.Loyolty_Point, Model.Loyolty_Point)</td>
+                <td>@Html.TextBoxFor(c => c.Loyolty_Point, Model.Loyolty_Point, new { @placeholder = "Loyolty Point" })</td>
                 <td>@Html.ValidationMessageFor(c => c.Loyolty_Point)</td>
 
             </tr>

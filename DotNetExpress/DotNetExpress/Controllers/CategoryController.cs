@@ -99,17 +99,6 @@ namespace DotNetExpress.Controllers
             return View(categoryViewModel);
         }
 
-        //try
-        //{
-        //    CategoryManager categoryManager = new CategoryManager();
-        //    categoryManager.Update(smodel);
-        //    return RedirectToAction("GetAll");
-        //}
-        //catch
-        //{
-        //    return View();
-        //}
-        //  }
         public ActionResult Delete(int id)
         {
             try

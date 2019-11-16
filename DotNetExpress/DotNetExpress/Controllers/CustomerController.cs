@@ -7,12 +7,27 @@ using DotNetExpress.Model;
 using DotNetExpress.BLL.BLL;
 using DotNetExpress.Model.Model;
 using AutoMapper;
+using DotNetExpress.DatabaseDbContext.DatabaseDbContext;
 
 namespace DotNetExpress.Controllers
 {
     public class CustomerController : Controller
     {
         CustomerManager _customerManager = new CustomerManager();
+        ProjectDbContext _dbContext = new ProjectDbContext();
+        public ActionResult CheckExist(string code, int? Id)
+        {
+            var validateName = _dbContext.Suppliers.FirstOrDefault
+                                (x => x.Code == code && x.Id != Id);
+            if (validateName != null)
+            {
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+            }
+        }
 
         [HttpGet]
         public ActionResult Add()

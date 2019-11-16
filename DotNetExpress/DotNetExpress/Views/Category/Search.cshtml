@@ -14,8 +14,8 @@
 
 }
 <center>
-    <h2 style="color:darkgreen">Search Any Categoey</h2>
-    <div class="menu">
+    <h2 style="color:darkgreen; margin-left:-10px; margin-top:-15px" >Search Any Categoey</h2>
+    <div class="menu"style="margin-top:-10px">
         <table>
             <tr>
                 <td>
@@ -31,12 +31,12 @@
             <table>
                 <tr>
                     <td>@Html.LabelFor(c => c.Code)</td>
-                    <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                    <td>@Html.TextBoxFor(c => c.Code, Model.Code, new { @placeholder = "Category Code" })</td>
                     <td>@Html.ValidationMessageFor(c => c.Code)</td>
                 </tr>
                 <tr>
                     <td>@Html.LabelFor(c => c.Name)</td>
-                    <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                    <td>@Html.TextBoxFor(c => c.Name, Model.Name, new { @placeholder = "Category Name" })</td>
                     <td>@Html.ValidationMessageFor(c => c.Name)</td>
                 </tr>
                 <tr>
