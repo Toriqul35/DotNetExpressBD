@@ -130,5 +130,69 @@ namespace DotNetExpress.Controllers
                 }).ToList();
             return View(productViewModel);
         }
+        public ActionResult Search()
+        {
+
+
+            ProductViewModel productViewModel = new ProductViewModel();
+            productViewModel.Products = _productManager.GetAll();
+            productViewModel.CategorySelectListItems = _categoryManager
+               .GetAll().Select(c => new SelectListItem()
+               {
+                   Value = c.Id.ToString(),
+                   Text = c.Code
+               }).ToList();
+
+            return View(productViewModel);
+
+           
+        }
+        [HttpPost]
+        public ActionResult Search(ProductViewModel productViewModel)
+        {
+            var product = _productManager.GetAll();
+
+            if (productViewModel.Code != null)
+            {
+                product = product.Where(c => c.Code.Contains(productViewModel.Code)).ToList();
+
+            }
+            if (productViewModel.Name != null)
+            {
+                product = product.Where(c => c.Name.ToLower().Contains(productViewModel.Name.ToLower())).ToList();
+            }
+            if (productViewModel.Name != null)
+            {
+                product = product.Where(c => c.Name.ToLower().Contains(productViewModel.Name.ToLower())).ToList();
+            }
+         
+            productViewModel.Products = product;
+            productViewModel.CategorySelectListItems = _categoryManager
+                .GetAll().Select(c => new SelectListItem()
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Code
+                }).ToList();
+
+            return View(productViewModel);
+
+        }
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                ProductManager productManager  = new ProductManager();
+                if (productManager.Delete(id))
+                {
+                    ViewBag.AlertMsg = "Deleted Successfully";
+                }
+                return RedirectToAction("ViewProduct");
+            }
+            catch
+            {
+                return View();
+            }
+
+        }
     }
 }

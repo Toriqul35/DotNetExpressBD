@@ -117,7 +117,7 @@ namespace DotNetExpress.Controllers
                 CategoryManager categoryManager = new CategoryManager();
                 if (categoryManager.Delete(id))
                 {
-                    ViewBag.AlertMsg = "Student Deleted Successfully";
+                    ViewBag.AlertMsg = "Deleted Successfully";
                 }
                 return RedirectToAction("GetAll");
             }
