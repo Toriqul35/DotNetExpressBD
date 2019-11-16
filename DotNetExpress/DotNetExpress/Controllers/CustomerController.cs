@@ -49,7 +49,7 @@ namespace DotNetExpress.Controllers
             ViewBag.Message = message;
             customerViewModel.Customers = _customerManager.GetAll();
 
-            return RedirectToAction("Index", "Home");
+            return View(customerViewModel);
 
 
         }
@@ -115,6 +115,43 @@ namespace DotNetExpress.Controllers
             ViewBag.Message = message;
             customerViewModel.Customers = _customerManager.Add();
             return View(customerViewModel);
+        }
+        [HttpGet]
+        public ActionResult Search()
+        {
+
+            CustomerViewModel customerViewModel = new CustomerViewModel();
+            customerViewModel.Customers = _customerManager.Add();
+
+            return View(customerViewModel);
+        }
+        [HttpPost]
+        public ActionResult Search(CustomerViewModel customerViewModel)
+        {
+            var customer = _customerManager.Add();
+
+            if (customerViewModel.Code != null)
+            {
+                customer = customer.Where(c => c.Code.Contains(customerViewModel.Code)).ToList();
+
+            }
+            if (customerViewModel.Name != null)
+            {
+                customer = customer.Where(c => c.Name.ToLower().Contains(customerViewModel.Name.ToLower())).ToList();
+            }
+            if (customerViewModel.Email != null)
+            {
+                customer = customer.Where(c => c.Email.ToLower().Contains(customerViewModel.Email.ToLower())).ToList();
+            }
+            if (customerViewModel.Contact != null)
+            {
+                customer = customer.Where(c => c.Contact.ToLower().Contains(customerViewModel.Contact.ToLower())).ToList();
+            }
+
+            customerViewModel.Customers = customer;
+
+            return View(customerViewModel);
+
         }
     }
 }

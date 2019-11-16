@@ -19,51 +19,50 @@
         <table>
             <tr>
                 <td>
-
+                    <a href="~/category/Add" class="btn btn-primary btn-xs pull-right"><b>+</b>Add new categories </a>
                     <a href="~/Category/GetAll"><input class='btn btn-info btn-xs' type="submit" value="View Category" /></a>
                 </td>
             </tr>
         </table>
     </div>
-    <center>
-        <div class="menu">
-            <form method="post">
-                <table>
-                    <tr>
-                        <td>@Html.LabelFor(c => c.Code)</td>
-                        <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
-                        <td>@Html.ValidationMessageFor(c => c.Code)</td>
-                    </tr>
-                    <tr>
-                        <td>@Html.LabelFor(c => c.Name)</td>
-                        <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
-                        <td>@Html.ValidationMessageFor(c => c.Name)</td>
-                    </tr>
-                    <tr>
-                        <td>Action</td>
-                        <td><input class='btn btn-info btn-xs' type="submit" value="Search" /></td>
 
-                        <td>
-                            @if (ViewBag.Message != null)
-                            {
-                                <h3>
-                                    <b>
-                                        @ViewBag.Message
-                                    </b>
-                                </h3>
-                            }
+    <div class="menu">
+        <form method="post">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Code)</td>
+                    <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Code)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Name)</td>
+                    <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Name)</td>
+                </tr>
+                <tr>
+                    <td>Action</td>
+                    <td><input class='btn btn-info btn-xs' type="submit" value="Search" /></td>
 
-                        </td>
-                    </tr>
+                    <td>
+                        @if (ViewBag.Message != null)
+                        {
+                            <h3>
+                                <b>
+                                    @ViewBag.Message
+                                </b>
+                            </h3>
+                        }
 
-                </table>
-            </form>
-            @{
+                    </td>
+                </tr>
 
-                Html.RenderPartial("~/Views/Shared/Category/_CategoryDetails.cshtml", Model);
-            }
-        </div>
-   
+            </table>
+        </form>
+        @{
+
+            Html.RenderPartial("~/Views/Shared/Category/_CategoryDetails.cshtml", Model);
+        }
+    </div>
 </center>
 @section MyScript
     {

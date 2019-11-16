@@ -4,19 +4,28 @@
 
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
+@section MyStyle
+{
     <link href="~/CSS/Business/Category/Add.css" rel="stylesheet" type="text/css" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>Add</title>
+}
+<center>
+    <h2 style="color:green"> Update Any Customer</h2>
+    <div class="menu">
+        <table>
+            <tr>
+                <td>
+                    <a href="~/Customer/AllCustomer"><input class='btn btn-info btn-xs' type="submit" value="View Customer" /></a>
+                    <a href="~/Customer/Add"><input class='btn btn-info btn-xs' type="submit" value="Create New" /></a>
+                </td>
+            </tr>
+        </table>
+    </div>
 
-</head>
-<body>
     <div class="menu">
         <form method="post">
             <table>
@@ -69,5 +78,11 @@
             </table>
         </form>
     </div>
-</body>
-</html>
+</center>
+@section MyScript
+    {
+
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
