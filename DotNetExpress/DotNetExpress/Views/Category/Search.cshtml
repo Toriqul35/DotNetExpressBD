@@ -25,39 +25,45 @@
             </tr>
         </table>
     </div>
-    <div class="menu">
-        <form method="post">
-            <table>
-                <tr>
-                    <td>@Html.LabelFor(c => c.Code)</td>
-                    <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
-                    <td>@Html.ValidationMessageFor(c => c.Code)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(c => c.Name)</td>
-                    <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
-                    <td>@Html.ValidationMessageFor(c => c.Name)</td>
-                </tr>
-                <tr>
-                    <td>Action</td>
-                    <td><input class='btn btn-info btn-xs' type="submit" value="Search" /></td>
+    <center>
+        <div class="menu">
+            <form method="post">
+                <table>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Code)</td>
+                        <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                        <td>@Html.ValidationMessageFor(c => c.Code)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.LabelFor(c => c.Name)</td>
+                        <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                        <td>@Html.ValidationMessageFor(c => c.Name)</td>
+                    </tr>
+                    <tr>
+                        <td>Action</td>
+                        <td><input class='btn btn-info btn-xs' type="submit" value="Search" /></td>
 
-                    <td>
-                        @if (ViewBag.Message != null)
-                        {
-                            <h3>
-                                <b>
-                                    @ViewBag.Message
-                                </b>
-                            </h3>
-                        }
+                        <td>
+                            @if (ViewBag.Message != null)
+                            {
+                                <h3>
+                                    <b>
+                                        @ViewBag.Message
+                                    </b>
+                                </h3>
+                            }
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
 
-            </table>
-        </form>
-    </div>
+                </table>
+            </form>
+            @{
+
+                Html.RenderPartial("~/Views/Shared/Category/_CategoryDetails.cshtml", Model);
+            }
+        </div>
+   
 </center>
 @section MyScript
     {

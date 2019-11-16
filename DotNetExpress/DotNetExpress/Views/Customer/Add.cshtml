@@ -1,100 +1,91 @@
 ﻿@model DotNetExpress.Model.CustomerViewModel
 @{
-   Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
+@section MyStyle
+{
     <link href="~/CSS/Business/Add.css" rel="stylesheet" type="text/css" />
-    <title>New Category Add</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
 
-</head>
-<body>
-    <div class="menu">
-        <form method="post">
-            <table>
-                <tr>
-                    <td>@Html.LabelFor(c => c.Code)</td>
-                    @*<td><input Class="td" type="text" name="Code" value="@Model.Code" /></td>*@
-                    <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
-                    <td>@Html.ValidationMessageFor(c => c.Code)</td>
-                    
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(c => c.Name)</td>
-                    <td><input Class="td" type="text" name="Name" value="@Model.Name" /></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Address</td>
-                    <td><input Class="td" type="text" name="Address" value="@Model.Address" /></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Email</td>
-                    <td><input Class="td" type="text" name="Email" value="@Model.Email" /></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Contact</td>
-                    <td><input Class="td" type="text" name="Contact" value="@Model.Contact" /></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Loyolty Point</td>
-                    <td><input Class="td" type="text" name="Loyolty_Point" value="@Model.Loyolty_Point" /></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input class='btn btn-info btn-xs' type="submit" value="Create" /></td>
-                    <td>
-                        @if (ViewBag.Message != null)
-                        {
-                            <h3>
-                                <b>
-                                    @ViewBag.Message
-                                </b>
-                            </h3>
-                        }
-
-                    </td>
-                </tr>
-
-            </table>
-        </form>
-
+}
+<center>
+    <h2 style="color:darkgreen"> Create new Customer </h2>
+</center>
+<div class="menu">
+    <table>
+        <tr>
+            <td>
+                <a href="~/Customer/AllCustomer"><input class='btn btn-info btn-xs' type="submit" value="View All Customer" /></a>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="menu">
+    <form method="post">
         <table>
             <tr>
-                <th>Sl</th>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Email</th>
-                <th>Contact</th>
-                <th>Loyolty_Point</th>
-            </tr>
-            @{ int i = 1;}
-            @foreach (var customer in Model.Customers)
-            
-            {
-                <tr>
-                    <td>@(i++)</td>
-                    <td>@customer.Code</td>
-                    <td>@customer.Name</td>
-                    <td>@customer.Address</td>
-                    <td>@customer.Email</td>
-                    <td>@customer.Contact</td>
-                    <td>@customer.Loyolty_Point</td>
-               
-                </tr>
-             
-              }
+                <td>@Html.LabelFor(c => c.Code)</td>
+                <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
+                <td>@Html.ValidationMessageFor(c => c.Code)</td>
 
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Name)</td>
+                <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                <td>@Html.ValidationMessageFor(c => c.Name)</td>
+
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Address)</td>
+                <td>@Html.TextBoxFor(c => c.Address, Model.Address)</td>
+                
+
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Email)</td>
+                <td>@Html.TextBoxFor(c => c.Email, Model.Email)</td>
+                <td>@Html.ValidationMessageFor(c => c.Email)</td>
+
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Contact)</td>
+                <td>@Html.TextBoxFor(c => c.Contact, Model.Contact)</td>
+                <td>@Html.ValidationMessageFor(c => c.Contact)</td>
+
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Loyolty_Point)</td>
+                <td>@Html.TextBoxFor(c => c.Loyolty_Point, Model.Loyolty_Point)</td>
+                <td>@Html.ValidationMessageFor(c => c.Loyolty_Point)</td>
+
+            </tr>
+            <tr>
+                <td> Action </td>
+                <td><input class='btn btn-info btn-xs' type="submit" value="Create" /></td>
+                <td>
+                    @if (ViewBag.Message != null)
+                    {
+                        <h3>
+                            <b>
+                                @ViewBag.Message
+                            </b>
+                        </h3>
+                    }
+                </td>
+            </tr>
         </table>
-    </div>
-</body>
-</html>
+    </form>
+</div>
+@section MyScript
+    {
+
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

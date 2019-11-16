@@ -27,14 +27,7 @@ namespace DotNetExpress.Controllers
         public ActionResult Add(CustomerViewModel customerViewModel)
         {
             string message = "";
-
-            //Customer customer = new Customer();
-            //customer.Code = customerViewModel.Code;
-            //customer.Name = customerViewModel.Name;
-            //customer.Address = customerViewModel.Address;
-            //customer.Email = customerViewModel.Email;
-            //customer.Contact = customerViewModel.Contact;
-            //customer.Loyolty_Point = customerViewModel.Code;
+          
             if (ModelState.IsValid)
             {
                 Customer customer = Mapper.Map<Customer>(customerViewModel);
@@ -89,22 +82,39 @@ namespace DotNetExpress.Controllers
         [HttpGet]
         public ActionResult Update(int id)
         {
-            CustomerManager customerManager = new CustomerManager();
-             return View(customerManager.Add().Find(smodel => smodel.Id == id));
+            var customer = _customerManager.GetById(id);
+            CustomerViewModel customerViewModel = Mapper.Map<CustomerViewModel>(customer);
+            customerViewModel.Customers = _customerManager.Add();
+
+            return View(customerViewModel);
+            
         }
         [HttpPost]
-        public ActionResult Update(int id, Customer smodel)
+        public ActionResult Update(CustomerViewModel customerViewModel)
         {
-            try
+            string message = "";
+
+            if (ModelState.IsValid)
             {
-                CustomerManager customerManager = new CustomerManager();
-                customerManager.Update(smodel);
-                return RedirectToAction("AllCustomer");
+                Customer customer = Mapper.Map<Customer>(customerViewModel);
+
+                if (_customerManager.Update(customer))
+                {
+                    message = "Updated";
+                }
+                else
+                {
+                    message = "Not Updated";
+                }
             }
-            catch
+            else
             {
-                return View();
+                message = "Update Failed";
             }
+
+            ViewBag.Message = message;
+            customerViewModel.Customers = _customerManager.Add();
+            return View(customerViewModel);
         }
     }
 }

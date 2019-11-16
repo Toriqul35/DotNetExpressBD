@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Linq;
 using DotNetExpress.Model.Model;
 using DotNetExpress.DatabaseDbContext.DatabaseDbContext;
 
@@ -37,7 +36,10 @@ namespace DotNetExpress.Repository.Repository
                }
 
               return _dbContext.SaveChanges() > 0;
-       }
-       
+            }
+           public Customer GetById(int id)
+           {
+               return _dbContext.Customers.FirstOrDefault(c => c.Id == id);
+           }
     }
 }

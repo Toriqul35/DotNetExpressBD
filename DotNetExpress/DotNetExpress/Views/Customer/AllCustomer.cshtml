@@ -4,50 +4,68 @@
 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section MyStyle
+{
+    <link href="~/CSS/Business/Category/View.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-<link href="~/CSS/Business/Category/View.css" rel="stylesheet" type="text/css" />
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<div class="tab">
-    <div class="container">
-        <div class="row col-md-6 col-md-offset-2 custyle">
-            <input id="myInput" type="text" placeholder="Search..">
-            <table class="table table-striped custab">
-                <thead>
-                    <a class="btn btn-primary btn-xs pull-right" @Html.ActionLink("Add New Category", "Add", "Customer")></a>
-                    <tr>
-                        <th> @Html.DisplayNameFor(model => model.Code)</th>
-                        <th> @Html.DisplayNameFor(model => model.Name)</th>
-                        <th> @Html.DisplayNameFor(model => model.Address)</th>
-                        <th> @Html.DisplayNameFor(model => model.Email)</th>
-                        <th> @Html.DisplayNameFor(model => model.Contact)</th>
-                        <th> @Html.DisplayNameFor(model => model.Loyolty_Point)</th>
+}
 
-                        <th class="text-center">Action</th>
-                    </tr>
-                </thead>
-
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td> @Html.DisplayFor(modelItem => item.Code)</td>
-                        <td> @Html.DisplayFor(modelItem => item.Name)</td>
-                        <td> @Html.DisplayFor(modelItem => item.Address)</td>
-                        <td> @Html.DisplayFor(modelItem => item.Email)</td>
-                        <td> @Html.DisplayFor(modelItem => item.Contact)</td>
-                        <td> @Html.DisplayFor(modelItem => item.Loyolty_Point)</td>
+<h2 class="head" style="margin-left:400px"> All Categoey</h2>
 
 
-                        <td class="text-center">
-                            <a class='btn btn-info btn-xs' @Html.ActionLink("Edit", "Update", new { id = item.Id })></a>
-                            <a class="btn btn-danger btn-xs" @Html.ActionLink("Delete", "Delete", new { id = item.Id })></a>
+    <div class="tab">
+        <div class="container">
+            <div class="row col-md-6 col-md-offset-2 custyle">
+                <table class="table table-striped custab">
+                    <thead>
+                        <a href="~/Customer/Add" class="btn btn-primary btn-xs pull-right"><b>+</b>New Customer </a>
+                        <a href="~/Customer/Search" class="btn btn-primary btn-xs pull-right"><b>+</b> Search Item </a>
+
+                        <tr>
+                            <th>SI</th>
+                            <th> @Html.DisplayNameFor(model => model.Code)</th>
+                            <th> @Html.DisplayNameFor(model => model.Name)</th>
+                            <th> @Html.DisplayNameFor(model => model.Address)</th>
+                            <th> @Html.DisplayNameFor(model => model.Email)</th>
+                            <th> @Html.DisplayNameFor(model => model.Contact)</th>
+                            <th> @Html.DisplayNameFor(model => model.Loyolty_Point)</th>
+
+                            <th >Action</th>
+                        </tr>
+                    </thead>
+
+                    @{ int i = 1;}
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>@(i++)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Code)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Name)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Address)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Email)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Contact)</td>
+                    <td> @Html.DisplayFor(modelItem => item.Loyolty_Point)</td>
+                
+
+                           
+                       <td class="text-center">
+
+                                @Html.ActionLink("Update", "Update", new { id = item.Id }, new { @class = "btn btn-info btn-xs" })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
                         </td>
-                    </tr>
-
-                }
-
-            </table>
+                        </tr>
+                      }
+                </table>
+            </div>
         </div>
     </div>
-</div>
+@section MyScript
+    {
+
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

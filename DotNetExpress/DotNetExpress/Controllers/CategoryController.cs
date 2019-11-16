@@ -65,8 +65,7 @@ namespace DotNetExpress.Controllers
             categoryViewModel.Categories = _CategoryManager.Add();
 
             return View(categoryViewModel);
-            //CategoryManager categoryManager = new CategoryManager();
-            //return View(categoryManager.Add().Find(smodel => smodel.Id == id));
+            
         }
         // POST: Student/Edit/5	
         [HttpPost]
