@@ -1,0 +1,98 @@
+﻿@model DotNetExpress.Model.SupplierViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+@section MyStyle
+{
+    <link href="~/CSS/Business/Add.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+
+}
+<center>
+    <div class="menu">
+        <table>
+            <tr>
+                <td>
+                    <a href="~/Supplier/ViewSupplier"><input class='btn btn-info btn-xs' type="submit" value="View Supplier" /></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="menu">
+        <form method="post">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Name)</td>
+                    <td>@Html.TextBoxFor(c => c.Name, Model.Name)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Email)</td>
+                    <td>@Html.TextBoxFor(c => c.Email, Model.Email)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Email)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Contact)</td>
+                    <td>@Html.TextBoxFor(c => c.Contact, Model.Contact)</td>
+                    <td>@Html.ValidationMessageFor(c => c.Contact)</td>
+                </tr>
+                
+                <tr>
+                    <td> Action </td>
+                    <td><input class='btn btn-info btn-xs' type="submit" value="Create" /></td>
+                    <td>
+                        @if (ViewBag.Message != null)
+                        {
+                            <h3>
+                                <b>
+                                    @ViewBag.Message
+                                </b>
+                            </h3>
+                        }
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Sl</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Contact Person</th>
+                </tr>
+                @{ int i = 1;}
+                @foreach (var customer in Model.Suppliers)
+
+                {
+            <tr>
+                <td>@(i++)</td>
+                <td>@customer.Code</td>
+                <td>@customer.Name</td>
+                <td>@customer.Address</td>
+                <td>@customer.Email</td>
+                <td>@customer.Contact</td>
+                <td>@customer.Contact_Person</td>
+            </tr>
+                }
+            </table>
+        </form>
+    </div>
+</center>
+@section MyScript
+    {
+
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
+
+

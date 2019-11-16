@@ -85,6 +85,10 @@
     <Compile Include="Migrations\201911161228029_addproduct.Designer.cs">
       <DependentUpon>201911161228029_addproduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911161850248_SupplierAdd.cs" />
+    <Compile Include="Migrations\201911161850248_SupplierAdd.Designer.cs">
+      <DependentUpon>201911161850248_SupplierAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -125,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911161228029_addproduct.resx">
       <DependentUpon>201911161228029_addproduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911161850248_SupplierAdd.resx">
+      <DependentUpon>201911161850248_SupplierAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

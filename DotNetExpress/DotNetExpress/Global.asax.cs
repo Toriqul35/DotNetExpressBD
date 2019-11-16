@@ -29,6 +29,9 @@ namespace DotNetExpress
 
                 cfg.CreateMap<ProductViewModel, Product>();
                 cfg.CreateMap<Product, ProductViewModel>();
+
+                cfg.CreateMap<SupplierViewModel, Supplier>();
+                cfg.CreateMap<Supplier, SupplierViewModel>();
             });
             
         }
