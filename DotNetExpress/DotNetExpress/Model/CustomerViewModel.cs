@@ -15,7 +15,7 @@ namespace DotNetExpress.Model
         [Required(ErrorMessage = "Can not be Empty")]
         [MaxLength(6, ErrorMessage = "Maximum Lenght is 6")]
         [MinLength(4, ErrorMessage = "Must be 4 Lenght")]
-        [Display(Name = "Code : ")]
+        [Display(Name = "Code")]
         public string Code { get; set; }
         [Required(ErrorMessage = "Please input Name ")]
         public string Name { get; set; }

@@ -32,8 +32,13 @@ namespace DotNetExpress.Repository.Repository
                      {
                      acustomer.Code = customer.Code;
                      acustomer.Name = customer.Name;
+                     acustomer.Address = customer.Address;
+                     acustomer.Email = customer.Email;
+                     acustomer.Contact = customer.Contact;
+                     acustomer.Loyolty_Point = customer.Loyolty_Point;
 
-               }
+
+            }
 
               return _dbContext.SaveChanges() > 0;
             }

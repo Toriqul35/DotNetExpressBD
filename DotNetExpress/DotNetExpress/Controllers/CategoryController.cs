@@ -15,22 +15,24 @@ namespace DotNetExpress.Controllers
         CategoryManager _CategoryManager = new CategoryManager();
 
 
+
         [HttpGet]
         public ActionResult Add()
         {
             CategoryViewModel _categoryViewModel = new CategoryViewModel();
-            _categoryViewModel.Categories = _CategoryManager.Add();
+            _categoryViewModel.Categories = _CategoryManager.GetAll();
             return View(_categoryViewModel);
         }
 
         [HttpPost]
         public ActionResult Add(CategoryViewModel categoryViewModel)
         {
+           
             string message = " ";
             if (ModelState.IsValid)
             {
                 Category category = Mapper.Map<Category>(categoryViewModel);
-
+               
                 if (_CategoryManager.Add(category))
                 {
                     message = "Saved";
@@ -45,7 +47,7 @@ namespace DotNetExpress.Controllers
                 message = "Create Failed";
             }
             ViewBag.Message = message;
-            categoryViewModel.Categories = _CategoryManager.Add();
+            categoryViewModel.Categories = _CategoryManager.GetAll();
             return View(categoryViewModel);
         }
 
@@ -53,7 +55,7 @@ namespace DotNetExpress.Controllers
         {
             CategoryManager categoryManager = new CategoryManager();
             ModelState.Clear();
-            return View(categoryManager.Add());
+            return View(categoryManager.GetAll());
         }
 
         [HttpGet]
@@ -62,7 +64,7 @@ namespace DotNetExpress.Controllers
 
             var category = _CategoryManager.GetById(id);
             CategoryViewModel categoryViewModel = Mapper.Map<CategoryViewModel>(category);
-            categoryViewModel.Categories = _CategoryManager.Add();
+            categoryViewModel.Categories = _CategoryManager.GetAll();
 
             return View(categoryViewModel);
             
@@ -93,7 +95,7 @@ namespace DotNetExpress.Controllers
             }
 
             ViewBag.Message = message;
-            categoryViewModel.Categories = _CategoryManager.Add();
+            categoryViewModel.Categories = _CategoryManager.GetAll();
             return View(categoryViewModel);
         }
 
@@ -130,14 +132,14 @@ namespace DotNetExpress.Controllers
         {
             
             CategoryViewModel categoryViewModel = new CategoryViewModel();
-            categoryViewModel.Categories = _CategoryManager.Add();
+            categoryViewModel.Categories = _CategoryManager.GetAll();
 
             return View(categoryViewModel);
         }
         [HttpPost]
         public ActionResult Search(CategoryViewModel categoryViewModel)
         {
-            var category = _CategoryManager.Add();
+            var category = _CategoryManager.GetAll();
 
             if(categoryViewModel.Code != null)
             {

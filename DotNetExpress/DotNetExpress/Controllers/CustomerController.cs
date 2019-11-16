@@ -84,7 +84,7 @@ namespace DotNetExpress.Controllers
         {
             var customer = _customerManager.GetById(id);
             CustomerViewModel customerViewModel = Mapper.Map<CustomerViewModel>(customer);
-            customerViewModel.Customers = _customerManager.Add();
+            customerViewModel.Customers = _customerManager.GetAll();
 
             return View(customerViewModel);
             
@@ -113,7 +113,7 @@ namespace DotNetExpress.Controllers
             }
 
             ViewBag.Message = message;
-            customerViewModel.Customers = _customerManager.Add();
+            customerViewModel.Customers = _customerManager.GetAll();
             return View(customerViewModel);
         }
         [HttpGet]
@@ -121,14 +121,14 @@ namespace DotNetExpress.Controllers
         {
 
             CustomerViewModel customerViewModel = new CustomerViewModel();
-            customerViewModel.Customers = _customerManager.Add();
+            customerViewModel.Customers = _customerManager.GetAll();
 
             return View(customerViewModel);
         }
         [HttpPost]
         public ActionResult Search(CustomerViewModel customerViewModel)
         {
-            var customer = _customerManager.Add();
+            var customer = _customerManager.GetAll();
 
             if (customerViewModel.Code != null)
             {

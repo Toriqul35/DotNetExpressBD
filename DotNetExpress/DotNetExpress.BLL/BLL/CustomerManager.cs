@@ -28,10 +28,7 @@ namespace DotNetExpress.BLL.BLL
         {
             return _customerRepository.Update(customer);
         }
-        public List<Customer> Add()
-        {
-            return _customerRepository.GetAll();
-        }
+      
         public Customer GetById(int id)
         {
             return _customerRepository.GetById(id);

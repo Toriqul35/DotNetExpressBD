@@ -44,6 +44,7 @@
     <Compile Include="BLL\AddminManager.cs" />
     <Compile Include="BLL\CategoryManager.cs" />
     <Compile Include="BLL\CustomerManager.cs" />
+    <Compile Include="BLL\ProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

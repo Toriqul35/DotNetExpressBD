@@ -65,6 +65,26 @@
     <Compile Include="Migrations\201911131144105_Customer.Designer.cs">
       <DependentUpon>201911131144105_Customer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911160928386_ProductAdd.cs" />
+    <Compile Include="Migrations\201911160928386_ProductAdd.Designer.cs">
+      <DependentUpon>201911160928386_ProductAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911160940074_productCode.cs" />
+    <Compile Include="Migrations\201911160940074_productCode.Designer.cs">
+      <DependentUpon>201911160940074_productCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911161054579_add.cs" />
+    <Compile Include="Migrations\201911161054579_add.Designer.cs">
+      <DependentUpon>201911161054579_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911161108142_add1.cs" />
+    <Compile Include="Migrations\201911161108142_add1.Designer.cs">
+      <DependentUpon>201911161108142_add1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911161228029_addproduct.cs" />
+    <Compile Include="Migrations\201911161228029_addproduct.Designer.cs">
+      <DependentUpon>201911161228029_addproduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -90,6 +110,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911131144105_Customer.resx">
       <DependentUpon>201911131144105_Customer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911160928386_ProductAdd.resx">
+      <DependentUpon>201911160928386_ProductAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911160940074_productCode.resx">
+      <DependentUpon>201911160940074_productCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911161054579_add.resx">
+      <DependentUpon>201911161054579_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911161108142_add1.resx">
+      <DependentUpon>201911161108142_add1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911161228029_addproduct.resx">
+      <DependentUpon>201911161228029_addproduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

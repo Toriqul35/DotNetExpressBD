@@ -1,4 +1,4 @@
-﻿@model DotNetExpress.Model.CustomerViewModel
+﻿@model DotNetExpress.Model.ProductViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
@@ -15,13 +15,13 @@
 
 }
 <center>
-    <h2 style="color:darkgreen"> Create new Customer </h2>
+    <h2 style="color:darkgreen"> Create new Product </h2>
 </center>
 <div class="menu">
     <table>
         <tr>
             <td>
-                <a href="~/Customer/AllCustomer"><input class='btn btn-info btn-xs' type="submit" value="View Customer" /></a>
+                <a href="~/Product/ViewProduct"><input class='btn btn-info btn-xs' type="submit" value="View Product" /></a>
             </td>
         </tr>
     </table>
@@ -29,6 +29,11 @@
 <div class="menu">
     <form method="post">
         <table>
+            <tr>
+                <td>Category</td>
+                <td>@Html.DropDownListFor(c => c.CategoryId, Model.CategorySelectListItems, "--Select--")</td>
+                <td></td>
+            </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Code)</td>
                 <td>@Html.TextBoxFor(c => c.Code, Model.Code)</td>
@@ -42,29 +47,18 @@
 
             </tr>
             <tr>
-                <td>@Html.LabelFor(c => c.Address)</td>
-                <td>@Html.TextBoxFor(c => c.Address, Model.Address)</td>
-                
+                <td>@Html.LabelFor(c => c.Reorder_lavel)</td>
+                <td>@Html.TextBoxFor(c => c.Reorder_lavel, Model.Reorder_lavel)</td>
+                <td>@Html.ValidationMessageFor(c => c.Reorder_lavel)</td>
 
             </tr>
             <tr>
-                <td>@Html.LabelFor(c => c.Email)</td>
-                <td>@Html.TextBoxFor(c => c.Email, Model.Email)</td>
-                <td>@Html.ValidationMessageFor(c => c.Email)</td>
+                <td>@Html.LabelFor(c => c.Description)</td>
+                <td>@Html.TextBoxFor(c => c.Description, Model.Description)</td>
+                <td>@Html.ValidationMessageFor(c => c.Description)</td>
 
             </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Contact)</td>
-                <td>@Html.TextBoxFor(c => c.Contact, Model.Contact)</td>
-                <td>@Html.ValidationMessageFor(c => c.Contact)</td>
-
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Loyolty_Point)</td>
-                <td>@Html.TextBoxFor(c => c.Loyolty_Point, Model.Loyolty_Point)</td>
-                <td>@Html.ValidationMessageFor(c => c.Loyolty_Point)</td>
-
-            </tr>
+            
             <tr>
                 <td> Action </td>
                 <td><input class='btn btn-info btn-xs' type="submit" value="Create" /></td>

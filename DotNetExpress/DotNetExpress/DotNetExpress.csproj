@@ -135,11 +135,13 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\CategoryViewModel.cs" />
     <Compile Include="Model\CustomerViewModel.cs" />
+    <Compile Include="Model\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -159,6 +161,9 @@
     <Content Include="Views\Shared\Category\_CategoryDetails.cshtml" />
     <Content Include="Views\Shared\Customer\_CustomerDetails.cshtml" />
     <Content Include="Views\Customer\Search.cshtml" />
+    <Content Include="Views\Product\Add.cshtml" />
+    <Content Include="Views\Product\ViewProduct.cshtml" />
+    <Content Include="Views\Product\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

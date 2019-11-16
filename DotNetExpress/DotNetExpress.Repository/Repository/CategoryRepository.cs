@@ -12,8 +12,15 @@ namespace DotNetExpress.Repository.Repository
         ProjectDbContext _dbContext = new ProjectDbContext();
         public bool Add(Category category)
         {
-            _dbContext.categories.Add(category);
-            return _dbContext.SaveChanges() > 0;
+            int i = _dbContext.categories.Where(c => c.Code == category.Code).Count();
+            {
+                if (i > 0)
+                {
+                    return false;
+                }
+                _dbContext.categories.Add(category);
+                return _dbContext.SaveChanges() > 0;
+            }
         }
         public bool Delete(int id)
         {

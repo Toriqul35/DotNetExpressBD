@@ -6,17 +6,19 @@ using System.Threading.Tasks;
 
 namespace DotNetExpress.Model.Model
 {
-    public class Category
+    public class Product
     {
-        public Category()
-        
-            {
-               Products = new List<Product>();
-            }
         public int Id { get; set; }
+        
         public string Code { get; set; }
         public string Name { get; set; }
+        public string Reorder_lavel { get; set; }
+        public string Description { get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
-        public virtual List<Product> Products { get; set; }
+
+
+
     }
 }

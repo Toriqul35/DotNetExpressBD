@@ -23,7 +23,7 @@ namespace DotNetExpress.BLL.BLL
         {
             return _categoryRepository.Update(category);
         }
-        public List<Category> Add()
+        public List<Category>GetAll()
         {
             return _categoryRepository.GetAll();
         }
