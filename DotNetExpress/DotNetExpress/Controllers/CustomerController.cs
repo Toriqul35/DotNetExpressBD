@@ -15,10 +15,11 @@ namespace DotNetExpress.Controllers
     {
         CustomerManager _customerManager = new CustomerManager();
         ProjectDbContext _dbContext = new ProjectDbContext();
-        public ActionResult CheckExist(string code, int? Id)
+
+        public ActionResult CheckExist(string code, string contact,string email,int? Id)
         {
             var validateName = _dbContext.Suppliers.FirstOrDefault
-                                (x => x.Code == code && x.Id != Id);
+                                (x => x.Code == code && x.Id != Id ||x.Contact==contact && x.Id!=Id || x.Email == email && x.Id != Id);
             if (validateName != null)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);

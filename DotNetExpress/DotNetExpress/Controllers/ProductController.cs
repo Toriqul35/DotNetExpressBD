@@ -17,10 +17,10 @@ namespace DotNetExpress.Controllers
         CategoryManager _categoryManager = new CategoryManager();
         ProjectDbContext _dbContext = new ProjectDbContext();
 
-        public ActionResult CheckExist(string code, int? Id)
+        public ActionResult CheckExist(string code, string name, int? Id)
         {
             var validateName = _dbContext.Suppliers.FirstOrDefault
-                                (x => x.Code == code && x.Id != Id);
+                                (x => x.Code == code && x.Id != Id ||x.Name==name &&x.Id !=Id );
             if (validateName != null)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
@@ -41,7 +41,7 @@ namespace DotNetExpress.Controllers
                 .GetAll().Select(c => new SelectListItem()
                 {
                     Value = c.Id.ToString(),
-                    Text = c.Code
+                    Text = c.Name
                 }).ToList();
 
             
@@ -78,7 +78,7 @@ namespace DotNetExpress.Controllers
                 .Select(c => new SelectListItem()
                 {
                     Value = c.Id.ToString(),
-                    Text = c.Code
+                    Text = c.Name
                 }).ToList();
             return View(productViewModel);
         }

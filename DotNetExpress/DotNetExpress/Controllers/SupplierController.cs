@@ -16,10 +16,10 @@ namespace DotNetExpress.Controllers
         SupplierManager _supplierManager = new SupplierManager();
         ProjectDbContext db = new ProjectDbContext();
         // GET: Supplier
-        public ActionResult CheckExist( string code,int? Id)
+        public ActionResult CheckExist( string code,int? Id, string contact,string email)
         {
                 var validateName = db.Suppliers.FirstOrDefault
-                                    (x => x.Code == code && x.Id != Id);
+                                    (x => x.Code == code && x.Id != Id ||x.Contact== contact && x.Id!=Id || x.Email == email && x.Id != Id);
                 if (validateName != null)
                 {
                     return Json(false, JsonRequestBehavior.AllowGet);

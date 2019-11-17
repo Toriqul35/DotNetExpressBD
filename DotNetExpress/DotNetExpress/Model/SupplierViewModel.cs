@@ -11,23 +11,26 @@ namespace DotNetExpress.Model
     public class SupplierViewModel
     {
         public int Id { get; set; }
+
         [Remote("CheckExist","Supplier", ErrorMessage ="The Code is exists")]
         [Required(ErrorMessage ="Please assign code")]
         [MinLength(4, ErrorMessage ="Code Must be 4 Length")]
         [MaxLength(4,ErrorMessage = "Code Must be 4 Length")]
         public String Code { get; set; }
+
         [Required(ErrorMessage ="Must be Assign Name")]
         [Remote("CheckExist", "Supplier", ErrorMessage = "The Code is exists")]
         public string Name { get; set; }
 
         public string Address { get; set; }
-       
+
+        [Remote("CheckExist", "Supplier", ErrorMessage = "The Email is exists")]
         [Required(ErrorMessage = "The email address is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
-        //[Remote("CheckExist", "Supplier", ErrorMessage = "The Code is exists")]
         public string Email { get; set; }
+
         [Required(ErrorMessage = "What is Cell Number ? ")]
-        //[Remote("CheckExist", "Supplier", ErrorMessage = "The Code is exists")]
+        [Remote("CheckExist", "Supplier", ErrorMessage = "The Email is exists")]
         public string Contact { get; set; }
         public string Contact_Person { get; set; }
 
