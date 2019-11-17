@@ -18,7 +18,7 @@ namespace DotNetExpress.Controllers
 
         public ActionResult CheckExist(string code, string name, int? Id)
         {
-            var validateName = _dbContext.Suppliers.FirstOrDefault
+            var validateName = _dbContext.categories.FirstOrDefault
                                 (x => x.Code == code && x.Id != Id || x.Name == name && x.Id != Id);
             if (validateName != null)
             {
@@ -129,35 +129,19 @@ namespace DotNetExpress.Controllers
             }
 
         }
+ 
         [HttpGet]
-        public ActionResult Search()
+        public ActionResult Search(string searching)
         {
-            
-            CategoryViewModel categoryViewModel = new CategoryViewModel();
-            categoryViewModel.Categories = _CategoryManager.GetAll();
-
-            return View(categoryViewModel);
-        }
-        [HttpPost]
-        public ActionResult Search(CategoryViewModel categoryViewModel)
-        {
-            var category = _CategoryManager.GetAll();
-
-            if(categoryViewModel.Code != null)
+            var category = from s in _dbContext.categories
+                           select s;
+            if (!String.IsNullOrEmpty(searching))
             {
-                category = category.Where(c => c.Code.Contains(categoryViewModel.Code)).ToList();
-
+                category = category.Where(s => s.Code.Contains(searching)||s.Name.Contains(searching));
             }
-             if (categoryViewModel.Name != null)
-             {
-                category = category.Where(c => c.Name.ToLower().Contains(categoryViewModel.Name.ToLower())).ToList();
-             }
 
-              categoryViewModel.Categories = category;
-
-            return View(categoryViewModel);
-
+            return View(category.ToList());
         }
-
+        
     }
 }

@@ -130,36 +130,23 @@ namespace DotNetExpress.Controllers
         }
 
         [HttpGet]
-        public ActionResult Search()
+        public ActionResult Search(string searching)
         {
-            SupplierViewModel supplierViewModel = new SupplierViewModel();
+            string message = "";
 
-            supplierViewModel.Suppliers = _supplierManager.GetAll();
-
-            return View(supplierViewModel);
-        }
-        [HttpPost]
-        public ActionResult Search(SupplierViewModel supplierViewModel)
-        {
-            var supplier = _supplierManager.GetAll();
-
-            if (supplierViewModel.Name != null)
+            var supplier = from s in db.Suppliers
+                           select s;
+            if (!String.IsNullOrEmpty(searching))
             {
-                supplier = supplier.Where(c => c.Name.ToLower().Contains(supplierViewModel.Name.ToLower())).ToList();
+                supplier = supplier.Where(s => s.Email.Contains(searching) || s.Name.Contains(searching) || s.Contact.Contains(searching));
             }
-            if (supplierViewModel.Email != null)
+            else
             {
-                supplier = supplier.Where(c => c.Email.ToLower().Contains(supplierViewModel.Email.ToLower())).ToList();
+                message = "Not Search";
             }
-            if (supplierViewModel.Contact != null)
-            {
-                supplier = supplier.Where(c => c.Contact.ToLower().Contains(supplierViewModel.Contact.ToLower())).ToList();
-            }
-
-            supplierViewModel.Suppliers = supplier;
-
-            return View(supplierViewModel);
-
+            ViewBag.Message = message;
+            return View(supplier.ToList());
+           
         }
     }
-}
+    }

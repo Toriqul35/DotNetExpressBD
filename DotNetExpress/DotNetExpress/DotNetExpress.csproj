@@ -110,6 +110,13 @@
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.0.js" />
     <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -154,7 +161,6 @@
     <None Include="packages.config" />
     <Content Include="Views\Category\GetAll.cshtml" />
     <Content Include="Views\Category\Update.cshtml" />
-    <Content Include="Views\Category\Search.cshtml" />
     <Content Include="Views\Category\Add.cshtml" />
     <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -174,6 +180,7 @@
     <Content Include="Views\Supplier\ViewSupplier.cshtml" />
     <Content Include="Views\Supplier\Update.cshtml" />
     <Content Include="Views\Supplier\Search.cshtml" />
+    <Content Include="Views\Category\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

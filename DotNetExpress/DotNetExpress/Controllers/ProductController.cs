@@ -19,8 +19,8 @@ namespace DotNetExpress.Controllers
 
         public ActionResult CheckExist(string code, string name, int? Id)
         {
-            var validateName = _dbContext.Suppliers.FirstOrDefault
-                                (x => x.Code == code && x.Id != Id ||x.Name==name &&x.Id !=Id );
+            var validateName = _dbContext.Products.FirstOrDefault
+                                (x => x.Code == code && x.Id != Id ||x.Name == name &&x.Id !=Id );
             if (validateName != null)
             {
                 return Json(false, JsonRequestBehavior.AllowGet);
@@ -146,52 +146,17 @@ namespace DotNetExpress.Controllers
                 }).ToList();
             return View(productViewModel);
         }
-        public ActionResult Search()
+        [HttpGet]
+        public ActionResult Search(string searching)
         {
-
-
-            ProductViewModel productViewModel = new ProductViewModel();
-            productViewModel.Products = _productManager.GetAll();
-            productViewModel.CategorySelectListItems = _categoryManager
-               .GetAll().Select(c => new SelectListItem()
-               {
-                   Value = c.Id.ToString(),
-                   Text = c.Code
-               }).ToList();
-
-            return View(productViewModel);
-
-           
-        }
-        [HttpPost]
-        public ActionResult Search(ProductViewModel productViewModel)
-        {
-            var product = _productManager.GetAll();
-
-            if (productViewModel.Code != null)
+            var product = from s in _dbContext.Products
+                           select s;
+            if (!String.IsNullOrEmpty(searching))
             {
-                product = product.Where(c => c.Code.Contains(productViewModel.Code)).ToList();
-
+                product = product.Where(s => s.Code.Contains(searching) || s.Name.Contains(searching));
             }
-            if (productViewModel.Name != null)
-            {
-                product = product.Where(c => c.Name.ToLower().Contains(productViewModel.Name.ToLower())).ToList();
-            }
-            if (productViewModel.Name != null)
-            {
-                product = product.Where(c => c.Name.ToLower().Contains(productViewModel.Name.ToLower())).ToList();
-            }
-         
-            productViewModel.Products = product;
-            productViewModel.CategorySelectListItems = _categoryManager
-                .GetAll().Select(c => new SelectListItem()
-                {
-                    Value = c.Id.ToString(),
-                    Text = c.Code
-                }).ToList();
 
-            return View(productViewModel);
-
+            return View(product.ToList());
         }
         public ActionResult Delete(int id)
         {

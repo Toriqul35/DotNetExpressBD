@@ -1,74 +1,65 @@
-﻿@model DotNetExpress.Model.CustomerViewModel
+﻿@model IEnumerable<DotNetExpress.Model.Model.Customer>
 @{
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
 @section MyStyle
 {
-    <link href="~/CSS/Business/Add.css" rel="stylesheet" type="text/css" />
+    <link href="~/CSS/Business/Category/Add.css" rel="stylesheet" type="text/css" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <meta name="viewport" content="width=device-width" />
-    <title></title>
+    <title>Add</title>
 
-}<center>
-    <h2 style="color:darkgreen; margin-top:-15px"> Search Any Customer </h2>
+}
+<center>
+    <h2 style="margin-top:-15px">Search any Customer</h2>
 
-    <div class="menu" style="margin-left:-100px; margin-top:-10px">
+
+    <div class="menu" style="margin-top:-10px">
         <table>
             <tr>
                 <td>
-                    <a href="~/Customer/Add" class="btn btn-primary btn-xs pull-right"><b>+</b>Add new Customer </a>
-                    <a href="~/Customer/AllCustomer"><input class='btn btn-info btn-xs' type="submit" value="View Customer" /></a>
+                    @using (Html.BeginForm("Search", "Customer", FormMethod.Get))
+                    {
+                        @Html.TextBox("Searching")
+                        <input class='btn btn-info btn-xs' type="submit" value="Search" />
+                    }
+
                 </td>
+                <td><a href="~/Customer/AllCustomer"><input class='btn btn-info btn-xs' type="submit" value="View Customer" /></a></td>
             </tr>
         </table>
     </div>
+    <table class="menu" style="margin-top:10px">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Loyolty Point</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var customer in Model)
+        {
+    <tr>
+        <td>@customer.Code</td>
+        <td>@customer.Name</td>
+        <td>@customer.Address</td>
+        <td>@customer.Contact</td>
+        <td>@customer.Email</td>
+        <td>@customer.Loyolty_Point</td>
+        <td>
+            @Html.ActionLink("Update", "Update", "Category", new { Id = customer.Id }, new { @class = "btn btn-info btn-xs" })
+            @Html.ActionLink("Delete", "Delete", "Category", new { Id = customer.Id }, new { @class = "btn btn-danger btn-xs" })
+        </td>
+    </tr>
+        }
+    </table>
 </center>
-<div class="menu" style="margin-left:380px">
-    <form method="post">
-        <table>
-            <tr>
-                <td>@Html.LabelFor(c => c.Name)</td>
-                <td>@Html.TextBoxFor(c => c.Name, Model.Name, new { @placeholder = "Customer Name" })</td>
-                <td>@Html.ValidationMessageFor(c => c.Name)</td>
-
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Email)</td>
-                <td>@Html.TextBoxFor(c => c.Email, Model.Email, new { @placeholder = "Email Address" })</td>
-                <td>@Html.ValidationMessageFor(c => c.Email)</td>
-
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Contact)</td>
-                <td>@Html.TextBoxFor(c => c.Contact, Model.Contact, new { @placeholder = "Customer Contact" })</td>
-                <td>@Html.ValidationMessageFor(c => c.Contact)</td>
-
-            </tr>
-            <tr>
-                <td> Action </td>
-                <td><input class='btn btn-info btn-xs' type="submit" value="Search" /></td>
-                <td>
-                    @if (ViewBag.Message != null)
-                    {
-                        <h3>
-                            <b>
-                                @ViewBag.Message
-                            </b>
-                        </h3>
-                    }
-                </td>
-            </tr>
-        </table>
-    </form>
-    @{
-
-        Html.RenderPartial("~/Views/Shared/Customer/_CustomerDetails.cshtml", Model);
-    }
-</div>
 @section MyScript
     {
 

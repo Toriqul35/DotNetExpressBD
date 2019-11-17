@@ -1,4 +1,4 @@
-﻿@model DotNetExpress.Model.SupplierViewModel
+﻿@model IEnumerable<DotNetExpress.Model.Model.Supplier>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
@@ -14,80 +14,52 @@
     <title>Add</title>
 
 }
-<center>
-    <h2 style="color:darkgreen; margin-top:-15px"> Search Any Supplier </h2>
-    <div class="menu" style="margin-left:-120px; margin-top:-10px">
+
+    <h2 style="color:darkgreen; margin-top:-15px; margin-left:380px"> Search Any Supplier </h2>
+
+    <div class="menu" style="margin-top:-10px">
         <table>
             <tr>
                 <td>
-                    <a href="~/Supplier/Add"><input class='btn btn-info btn-xs' type="submit" value="Create new Supplier"/></a>
-                    <a href="~/Supplier/ViewSupplier"><input class='btn btn-info btn-xs' type="submit" value="View Supplier" /></a>
+                    @using (Html.BeginForm("Search", "Supplier", FormMethod.Get))
+                    {
+                        @Html.TextBox("Searching" )
+                        <input class='btn btn-info btn-xs' type="submit" value="Search" />
+                    }
+
                 </td>
+           
+                <td><a href="~/Supplier/ViewSupplier"><input class='btn btn-info btn-xs' type="submit" value="View Supplier" /></a></td>
             </tr>
         </table>
     </div>
-</center>
-    <div class="menu" style="margin-left:375px"px>
-        <form method="post">
-            <table>
-                <tr>
-                    <td>@Html.LabelFor(c => c.Name)</td>
-                    <td>@Html.TextBoxFor(c => c.Name, Model.Name,new { @placehoder="Input Name"})</td>
-                    <td>@Html.ValidationMessageFor(c => c.Name)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(c => c.Email)</td>
-                    <td>@Html.TextBoxFor(c => c.Email, Model.Email, new { @placehoder="Input valid email" })</td>
-                    <td>@Html.ValidationMessageFor(c => c.Email)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(c => c.Contact)</td>
-                    <td>@Html.TextBoxFor(c => c.Contact, Model.Contact, new { @placehoder="Cell Number" })</td>
-                    <td>@Html.ValidationMessageFor(c => c.Contact)</td>
-                </tr>
+    <table class="menu" style="margin-top:10px">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Contact person</th>
 
-                <tr>
-                    <td> Action </td>
-                    <td><input class='btn btn-info btn-xs' type="submit" value="Search" /></td>
-                    <td>
-                        @if (ViewBag.Message != null)
-                        {
-                            <h3>
-                                <b>
-                                    @ViewBag.Message
-                                </b>
-                            </h3>
-                        }
-                    </td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <th>Sl</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Address</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Contact Person</th>
-                </tr>
-                @{ int i = 1;}
-                @foreach (var customer in Model.Suppliers)
-
-                {
-                    <tr>
-                        <td>@(i++)</td>
-                        <td>@customer.Code</td>
-                        <td>@customer.Name</td>
-                        <td>@customer.Address</td>
-                        <td>@customer.Email</td>
-                        <td>@customer.Contact</td>
-                        <td>@customer.Contact_Person</td>
-                    </tr>
-                }
-            </table>
-        </form>
-    </div>
+            <th>Action</th>
+        </tr>
+        @foreach (var supplier in Model)
+        {
+    <tr>
+        <td>@supplier.Code</td>
+        <td>@supplier.Name</td>
+        <td>@supplier.Address</td>
+        <td>@supplier.Email</td>
+        <td>@supplier.Contact</td>
+        <td>@supplier.Contact_Person</td>
+        <td>
+            @Html.ActionLink("Update", "Update", "Category", new { Id = supplier.Id }, new { @class = "btn btn-info btn-xs" })
+            @Html.ActionLink("Delete", "Delete", "Category", new { Id = supplier.Id }, new { @class = "btn btn-danger btn-xs" })
+        </td>
+    </tr>
+        }
+    </table>
 
 @section MyScript
     {
@@ -96,6 +68,3 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
-
-
-

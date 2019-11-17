@@ -1,12 +1,12 @@
-﻿@model DotNetExpress.Model.ProductViewModel
+﻿@model IEnumerable<DotNetExpress.Model.Model.Product>
 @{
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
 @section MyStyle
 {
-    <link href="~/CSS/Business/Add.css" rel="stylesheet" type="text/css" />
+    <link href="~/CSS/Business/Category/Add.css" rel="stylesheet" type="text/css" />
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -14,77 +14,50 @@
     <title>Add</title>
 
 }
-
 <center>
-    <h2 style="color:darkgreen; margin-top:-15px">Search Any Product</h2>
-    <div class="menu" style="margin-left:-40px; margin-top:-10px">
+    <h2 style="margin-top:-15px">Search any product</h2>
+
+
+    <div class="menu" style="margin-top:-10px">
         <table>
             <tr>
                 <td>
-                    <a href="~/Product/Add"><input class='btn btn-info btn-xs' type="submit" value="Create new Product" /></a>
-                    <a href="~/Product/ViewProduct"><input class='btn btn-info btn-xs' type="submit" value="View Product" /></a>
+                    @using (Html.BeginForm("Search", "Product", FormMethod.Get))
+                    {
+                        @Html.TextBox("Searching")
+                        <input class='btn btn-info btn-xs' type="submit" value="Search" />
+                    }
+
                 </td>
+                <td><a href="~/Product/ViewProduct"><input class='btn btn-info btn-xs' type="submit" value="View Product" /></a></td>
             </tr>
         </table>
     </div>
-    <div class="menu" style="margin-left:-40px">
-        <form method="post">
-            <table>
-                <tr>
-                    <td>Category</td>
-                    <td>@Html.DropDownListFor(c => c.CategoryId, Model.CategorySelectListItems, "--Select--")</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(c => c.Code)</td>
-                    <td>@Html.TextBoxFor(c => c.Code, Model.Code, new { @placeholder = " Code" })</td>
-                    <td>@Html.ValidationMessageFor(c => c.Code)</td>
-                </tr>
-                <tr>
-                    <td>@Html.LabelFor(c => c.Name)</td>
-                    <td>@Html.TextBoxFor(c => c.Name, Model.Name, new { @placeholder = "Product Code" })</td>
-                    <td>@Html.ValidationMessageFor(c => c.Name)</td>
-                </tr>
-                <tr>
-                    <td> Action </td>
-                    <td><input class='btn btn-info btn-xs' type="submit" value="Create" /></td>
-                    <td>
-                        @if (ViewBag.Message != null)
-                        {
-                            <h3>
-                                <b>
-                                    @ViewBag.Message
-                                </b>
-                            </h3>
-                        }
-                    </td>
-                </tr>
-            </table>
-            <table>
-                <tr>
-                    <th>Sl</th>
-                    <th>Code</th>
-                    <th>Name</th>
-                    <th>Reorder Level</th>
-                    <th>Description</th>
-                    <th>Category</th>
-                </tr>
-                @{ int i = 1;}
-                @foreach (var customer in Model.Products)
-
-                {
-                    <tr>
-                        <td>@(i++)</td>
-                        <td>@customer.Code</td>
-                        <td>@customer.Name</td>
-                        <td>@customer.Reorder_lavel</td>
-                        <td>@customer.Description</td>
-                        <td>@customer.CategoryId</td>
-                    </tr>
-                }
-            </table>
-        </form>
-    </div>
+    <table class="menu" style="margin-top:10px">
+        <tr>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Reorder level</th>
+            <th>Description</th>
+            <th>CategoryId</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Code</td>
+                <td>@product.Name</td>
+                <td>@product.Reorder_lavel</td>
+                <td>@product.Description</td>
+                <td>@product.CategoryId</td>
+              
+                <td>
+                    @Html.ActionLink("Update", "Update", "Category", new { Id = product.Id }, new { @class = "btn btn-info btn-xs" })
+                    @Html.ActionLink("Delete", "Delete", "Category", new { Id = product.Id }, new { @class = "btn btn-danger btn-xs" })
+                </td>
+            </tr>
+        }
+    </table>
 </center>
 @section MyScript
     {
@@ -93,6 +66,3 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
-
-
-

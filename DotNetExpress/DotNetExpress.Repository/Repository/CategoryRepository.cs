@@ -12,7 +12,7 @@ namespace DotNetExpress.Repository.Repository
         ProjectDbContext _dbContext = new ProjectDbContext();
         public bool Add(Category category)
         {
-            //int i = _dbContext.categories.Where(c => c.Code == category.Code || c.Name==category.Name).Count();
+            //int i = _dbContext.categories.Where(c => c.Code == category.Code || c.Name == category.Name).Count();
             //{
             //    if (i > 0)
             //    {
@@ -20,8 +20,8 @@ namespace DotNetExpress.Repository.Repository
             //    }
                 _dbContext.categories.Add(category);
                 return _dbContext.SaveChanges() > 0;
-            }
-        
+            
+        }
         public bool Delete(int id)
         {
             Category acategory = _dbContext.categories.FirstOrDefault((c => c.Id == id));

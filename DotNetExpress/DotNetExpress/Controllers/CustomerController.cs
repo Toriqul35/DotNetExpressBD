@@ -18,7 +18,7 @@ namespace DotNetExpress.Controllers
 
         public ActionResult CheckExist(string code, string contact,string email,int? Id)
         {
-            var validateName = _dbContext.Suppliers.FirstOrDefault
+            var validateName = _dbContext.Customers.FirstOrDefault
                                 (x => x.Code == code && x.Id != Id ||x.Contact==contact && x.Id!=Id || x.Email == email && x.Id != Id);
             if (validateName != null)
             {
@@ -67,10 +67,7 @@ namespace DotNetExpress.Controllers
 
             return View(customerViewModel);
 
-
         }
-
-
         public ActionResult AllCustomer(Customer customer)
         {
             CustomerManager _customerManager = new CustomerManager();
@@ -133,41 +130,16 @@ namespace DotNetExpress.Controllers
             return View(customerViewModel);
         }
         [HttpGet]
-        public ActionResult Search()
+        public ActionResult Search(string searching)
         {
-
-            CustomerViewModel customerViewModel = new CustomerViewModel();
-            customerViewModel.Customers = _customerManager.GetAll();
-
-            return View(customerViewModel);
-        }
-        [HttpPost]
-        public ActionResult Search(CustomerViewModel customerViewModel)
-        {
-            var customer = _customerManager.GetAll();
-
-            if (customerViewModel.Code != null)
+            var customer = from s in _dbContext.Customers
+                           select s;
+            if (!String.IsNullOrEmpty(searching))
             {
-                customer = customer.Where(c => c.Code.Contains(customerViewModel.Code)).ToList();
-
-            }
-            if (customerViewModel.Name != null)
-            {
-                customer = customer.Where(c => c.Name.ToLower().Contains(customerViewModel.Name.ToLower())).ToList();
-            }
-            if (customerViewModel.Email != null)
-            {
-                customer = customer.Where(c => c.Email.ToLower().Contains(customerViewModel.Email.ToLower())).ToList();
-            }
-            if (customerViewModel.Contact != null)
-            {
-                customer = customer.Where(c => c.Contact.ToLower().Contains(customerViewModel.Contact.ToLower())).ToList();
+                customer = customer.Where(s => s.Contact.Contains(searching) || s.Name.Contains(searching) || s.Email.Contains(searching) || s.Code.Contains(searching));
             }
 
-            customerViewModel.Customers = customer;
-
-            return View(customerViewModel);
-
+            return View(customer.ToList());
         }
     }
 }
