@@ -1,0 +1,73 @@
+﻿@model DotNetExpress.Model.PurchaseViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MyStyle
+{
+    <link href="~/CSS/Business/Add.css" rel="stylesheet" type="text/css" />
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+
+}
+<center>
+    <h2 style="color:darkgreen; margin-top:-15px"> Create new Product </h2>
+</center>
+<div class="menu" style="margin-left:370px; margin-top:-10px">
+    <table>
+        <tr>
+            <td>
+                <a href="~/Product/Search"><input class='btn btn-info btn-xs' type="submit" value="Search" /></a>
+                <a href="~/Product/ViewProduct"><input class='btn btn-info btn-xs' type="submit" value="View Purchase" /></a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<div class="menu" style="margin-left:370px">
+    <form method="post">
+        <table>
+            <tr>
+                <td>@Html.LabelFor(c => c.InvoiceNo)</td>
+                <td>@Html.TextBoxFor(c => c.InvoiceNo, Model.InvoiceNo, new { @placeholder = "Code" })</td>
+                <td>@Html.ValidationMessageFor(c => c.InvoiceNo)</td>
+
+            </tr>
+            <tr>
+            <td>Supplier Name : </td>
+            <td>@Html.DropDownListFor(c => c.SupplierId, Model.SupplierSelect, "--Select--")</td>
+            <td></td>
+        </tr>
+            <tr>
+                <td>Product Name : </td>
+                <td>@Html.DropDownListFor(c => c.ProductId, Model.ProductSelect, "--Select--")</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td> Action </td>
+                <td><input class='btn btn-info btn-xs' type="submit" value="Entry" /></td>
+                <td>
+                    @if (ViewBag.Message != null)
+                    {
+                        <h3>
+                            <b>
+                                @ViewBag.Message
+                            </b>
+                        </h3>
+                    }
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+@section MyScript
+    {
+
+    <script src="~/Scripts/jquery-1.8.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

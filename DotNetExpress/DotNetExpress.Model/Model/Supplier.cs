@@ -15,6 +15,8 @@ namespace DotNetExpress.Model.Model
         public string Email { get; set; }
         public string Contact { get; set; }
         public string Contact_Person { get; set; }
+
+        public virtual List<Purchase> Purchases { get; set; }
     }
 
 }

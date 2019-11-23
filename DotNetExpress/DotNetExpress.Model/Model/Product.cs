@@ -8,6 +8,11 @@ namespace DotNetExpress.Model.Model
 {
     public class Product
     {
+
+        public Product()
+        {
+            ProductId = new List<Purchase>();
+        }
         public int Id { get; set; }
         
         public string Code { get; set; }
@@ -17,8 +22,7 @@ namespace DotNetExpress.Model.Model
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 
-
-
-
+        public virtual ICollection<Purchase> ProductId { get; set; }
     }
 }
+

@@ -38,7 +38,15 @@ namespace DotNetExpress.Repository.Repository
 
         public List<Product> GetAll()
         {
-            return _dbContext.Products.ToList();
+            var product = _dbContext.Products.ToList();
+            foreach (var Produc in product)
+            {
+                _dbContext.Entry(Produc)
+                    .Collection(c => c.ProductId).Load();
+
+
+            }
+            return product;
         }
         public Product GetById(int id)
         {

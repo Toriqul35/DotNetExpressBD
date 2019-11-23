@@ -31,6 +31,7 @@ namespace DotNetExpress.Model
         public Category Category { get; set; }
         public List<Product> Products { get; set; }
         public List<SelectListItem> CategorySelectListItems { get; set; }
+        public virtual ICollection<Purchase> ProductId { get; set; }
 
 
     }
