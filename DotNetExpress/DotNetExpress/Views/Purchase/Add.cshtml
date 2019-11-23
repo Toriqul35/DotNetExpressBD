@@ -31,22 +31,72 @@
     <form method="post">
         <table>
             <tr>
+
+                <td>@Html.LabelFor(c => c.Date)</td>
+                <td>@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" }, @value = DateTime.Now, @readonly = "readonly" }) </td>
+                <td> @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" }) </td>
+            </tr>
+            <tr>
                 <td>@Html.LabelFor(c => c.InvoiceNo)</td>
                 <td>@Html.TextBoxFor(c => c.InvoiceNo, Model.InvoiceNo, new { @placeholder = "Code" })</td>
                 <td>@Html.ValidationMessageFor(c => c.InvoiceNo)</td>
-
             </tr>
             <tr>
-            <td>Supplier Name : </td>
-            <td>@Html.DropDownListFor(c => c.SupplierId, Model.SupplierSelect, "--Select--")</td>
-            <td></td>
-        </tr>
+                <td>Supplier Name : </td>
+                <td>@Html.DropDownListFor(c => c.SupplierId, Model.SupplierSelect, "--Select--")</td>
+                <td></td>
+            </tr>
             <tr>
                 <td>Product Name : </td>
                 <td>@Html.DropDownListFor(c => c.ProductId, Model.ProductSelect, "--Select--")</td>
                 <td></td>
             </tr>
+            <tr>
 
+                <td>@Html.LabelFor(c => c.ManufactureDate)</td>
+                <td>@Html.EditorFor(model => model.ManufactureDate, new { htmlAttributes = new { @class = "form-control" }, @value = DateTime.Now, @readonly = "readonly" }) </td>
+                <td> @Html.ValidationMessageFor(model => model.ManufactureDate, "", new { @class = "text-danger" }) </td>
+            </tr>
+            <tr>
+
+                <td>@Html.LabelFor(c => c.ExpireDate)</td>
+                <td>@Html.EditorFor(model => model.ExpireDate, new { htmlAttributes = new { @class = "form-control" }, @value = DateTime.Now, @readonly = "readonly" }) </td>
+                <td> @Html.ValidationMessageFor(model => model.ExpireDate, "", new { @class = "text-danger" }) </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Quantity)</td>
+                <td><input type="number" name="Quantity" value="@Model.Quantity" /></td>
+                <td>@Html.ValidationMessageFor(c => c.Quantity)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.UnitPrice)</td>
+                <td><input type="number" name="UnitPrice" value="@Model.UnitPrice" /></td>
+                <td>@Html.ValidationMessageFor(c => c.UnitPrice)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.TotalPrice)</td>
+                <td><input type="number" name="TotalPrice" value="@Model.TotalPrice" /></td>
+                <td>@Html.ValidationMessageFor(c => c.TotalPrice)</td>
+            <tr>
+                <td>@Html.LabelFor(c => c.PreviousUnit)</td>
+                <td><input type="number" name="PreviousUnit" value="@Model.PreviousUnit" /></td>
+                <td>@Html.ValidationMessageFor(c => c.PreviousUnit)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.PreviousMRP)</td>
+                <td><input type="number" name="PreviousMRP" value="@Model.PreviousMRP" /></td>
+                <td>@Html.ValidationMessageFor(c => c.PreviousMRP)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.MRP)</td>
+                <td><input type="number" name="MRP" value="@Model.MRP" /></td>
+                <td>@Html.ValidationMessageFor(c => c.MRP)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Remarks)</td>
+                <td>@Html.TextBoxFor(c => c.Remarks, Model.Remarks, new { @placeholder = "Write Remarks Values" })</td>
+                <td>@Html.ValidationMessageFor(c => c.Remarks)</td>
+            </tr>
             <tr>
                 <td> Action </td>
                 <td><input class='btn btn-info btn-xs' type="submit" value="Entry" /></td>

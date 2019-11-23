@@ -97,6 +97,26 @@
     <Compile Include="Migrations\201911230524362_da.Designer.cs">
       <DependentUpon>201911230524362_da.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911231018290_purchasedate.cs" />
+    <Compile Include="Migrations\201911231018290_purchasedate.Designer.cs">
+      <DependentUpon>201911231018290_purchasedate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911231041322_purchaseAllData.cs" />
+    <Compile Include="Migrations\201911231041322_purchaseAllData.Designer.cs">
+      <DependentUpon>201911231041322_purchaseAllData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911231100528_purchaseAllDatae.cs" />
+    <Compile Include="Migrations\201911231100528_purchaseAllDatae.Designer.cs">
+      <DependentUpon>201911231100528_purchaseAllDatae.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911231105553_purchaseAll.cs" />
+    <Compile Include="Migrations\201911231105553_purchaseAll.Designer.cs">
+      <DependentUpon>201911231105553_purchaseAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911231117513_decemal.cs" />
+    <Compile Include="Migrations\201911231117513_decemal.Designer.cs">
+      <DependentUpon>201911231117513_decemal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,6 +166,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911230524362_da.resx">
       <DependentUpon>201911230524362_da.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911231018290_purchasedate.resx">
+      <DependentUpon>201911231018290_purchasedate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911231041322_purchaseAllData.resx">
+      <DependentUpon>201911231041322_purchaseAllData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911231100528_purchaseAllDatae.resx">
+      <DependentUpon>201911231100528_purchaseAllDatae.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911231105553_purchaseAll.resx">
+      <DependentUpon>201911231105553_purchaseAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911231117513_decemal.resx">
+      <DependentUpon>201911231117513_decemal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
