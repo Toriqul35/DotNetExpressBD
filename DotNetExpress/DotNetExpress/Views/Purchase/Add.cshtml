@@ -65,17 +65,17 @@
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.Quantity)</td>
-                <td><input type="number" name="Quantity" value="@Model.Quantity" /></td>
+                <td><input type="number" name="Quantity" id="quantity" value="@Model.Quantity" /></td>
                 <td>@Html.ValidationMessageFor(c => c.Quantity)</td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.UnitPrice)</td>
-                <td><input type="number" name="UnitPrice" value="@Model.UnitPrice" /></td>
+                <td><input type="number" name="UnitPrice" id="Unit" value="@Model.UnitPrice" /></td>
                 <td>@Html.ValidationMessageFor(c => c.UnitPrice)</td>
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.TotalPrice)</td>
-                <td><input type="number" name="TotalPrice" value="@Model.TotalPrice" /></td>
+                <td><input type="number" name="TotalPrice" id="Total" value="@Model.TotalPrice" /></td>
                 <td>@Html.ValidationMessageFor(c => c.TotalPrice)</td>
             <tr>
                 <td>@Html.LabelFor(c => c.PreviousUnit)</td>
@@ -89,7 +89,7 @@
             </tr>
             <tr>
                 <td>@Html.LabelFor(c => c.MRP)</td>
-                <td><input type="number" name="MRP" value="@Model.MRP" /></td>
+                <td><input type="number" name="MRP" id="MRP" value="@Model.MRP" /></td>
                 <td>@Html.ValidationMessageFor(c => c.MRP)</td>
             </tr>
             <tr>
@@ -121,3 +121,54 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
+
+<script>
+
+    $(document).ready(function () {
+
+        var quantity = 0;
+        var Unit = 0;
+        var mrp = 25;
+        $("#quantity").keyup(function () {
+
+            if (!isNullOrEmpty($("#quantity").val())) {
+                quantity = parseInt($("#quantity").val());
+            }
+
+
+            if (!isNullOrEmpty($("#Unit").val())) {
+                Unit = parseInt($("#Unit").val());
+            }
+
+            $("#Total").val(quantity * Unit);
+             $("#MRP").val(quantity * Unit)+((mrp/100)*(quantity * Unit));
+
+        });
+        $("#Unit").keyup(function () {
+            if (!isNullOrEmpty($("#quantity").val())) {
+                quantity = parseInt($("#quantity").val());
+            }
+
+
+            if (!isNullOrEmpty($("#Unit").val())) {
+                Unit = parseInt($("#Unit").val());
+            }
+            $("#Total").val(quantity * Unit);
+               $("#MRP").val((quantity * Unit)+((mrp/100)*(quantity * Unit)));
+        });
+
+
+        function isNullOrEmpty(data) {
+            if (data === undefined || data === "" || isNaN(data)) {
+                return true;
+            }
+            return false;
+
+        }
+    });
+
+
+
+</script>
+
+

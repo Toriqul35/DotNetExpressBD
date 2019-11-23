@@ -48,8 +48,6 @@ namespace DotNetExpress.Controllers
             if (ModelState.IsValid)
             {
                 Purchase apurchase = Mapper.Map<Purchase>(purchaseViewModel);
-                //Purchase purchase = Mapper.Map<Purchase>(PurchaseViewModel);
-                ////Product product = Mapper.Map<Product>(productViewModel);
 
                 if (_purchaseManager.Add(apurchase))
                 {
