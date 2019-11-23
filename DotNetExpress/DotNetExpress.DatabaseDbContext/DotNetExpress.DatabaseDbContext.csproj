@@ -117,6 +117,22 @@
     <Compile Include="Migrations\201911231117513_decemal.Designer.cs">
       <DependentUpon>201911231117513_decemal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201911231428583_Pur.cs" />
+    <Compile Include="Migrations\201911231428583_Pur.Designer.cs">
+      <DependentUpon>201911231428583_Pur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911231432512_Purch.cs" />
+    <Compile Include="Migrations\201911231432512_Purch.Designer.cs">
+      <DependentUpon>201911231432512_Purch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911231513269_Purcha.cs" />
+    <Compile Include="Migrations\201911231513269_Purcha.Designer.cs">
+      <DependentUpon>201911231513269_Purcha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911231853026_Purchaup.cs" />
+    <Compile Include="Migrations\201911231853026_Purchaup.Designer.cs">
+      <DependentUpon>201911231853026_Purchaup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -181,6 +197,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201911231117513_decemal.resx">
       <DependentUpon>201911231117513_decemal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911231428583_Pur.resx">
+      <DependentUpon>201911231428583_Pur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911231432512_Purch.resx">
+      <DependentUpon>201911231432512_Purch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911231513269_Purcha.resx">
+      <DependentUpon>201911231513269_Purcha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911231853026_Purchaup.resx">
+      <DependentUpon>201911231853026_Purchaup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

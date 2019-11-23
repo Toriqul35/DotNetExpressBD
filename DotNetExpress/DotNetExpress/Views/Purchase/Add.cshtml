@@ -5,7 +5,8 @@
 
 @section MyStyle
 {
-    <link href="~/CSS/Business/Add.css" rel="stylesheet" type="text/css" />
+    <link href="~/CSS/Business/Purchase.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -14,105 +15,112 @@
 
 }
 <center>
-    <h2 style="color:darkgreen; margin-top:-15px"> Create new Product </h2>
+    <h2 style="color:darkgreen; margin-top:-15px"> Create one purchase </h2>
 </center>
-<div class="menu" style="margin-left:370px; margin-top:-10px">
-    <table>
-        <tr>
-            <td>
-                <a href="~/Product/Search"><input class='btn btn-info btn-xs' type="submit" value="Search" /></a>
-                <a href="~/Product/ViewProduct"><input class='btn btn-info btn-xs' type="submit" value="View Purchase" /></a>
-            </td>
-        </tr>
-    </table>
-</div>
-
-<div class="menu" style="margin-left:370px">
+<div class="div">
     <form method="post">
-        <table>
-            <tr>
+        <div class="table1">
+            <h5 style="margin-top:-24px; float:right">Supplier Details</h5>
+            <table class="td">
+                <tr>
+                    <td>@Html.LabelFor(c => c.Date)</td>
+                    <td>@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" }, @value = DateTime.Now, @readonly = "readonly" }) </td>
+                    <td> @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" }) </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.InvoiceNo)</td>
+                    <td>@Html.TextBoxFor(c => c.InvoiceNo, Model.InvoiceNo, new { id = "Invoice", @placeholder = "Code" })</td>
+                    <td>@Html.ValidationMessageFor(c => c.InvoiceNo)</td>
+                </tr>
+                <tr>
+                    <td>Supplier Name : </td>
+                    <td>@Html.DropDownListFor(c => c.SupplierId, Model.SupplierSelect, "--Select--")</td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div class="div1">
+            <table class="td1">
+                <tr>
+                    <td>Product Name : </td>
+                    <td>@Html.DropDownListFor(c => c.ProductId, Model.ProductSelect, "--Select--")</td>
+                    <td></td>
+                </tr>
+                <tr>
 
-                <td>@Html.LabelFor(c => c.Date)</td>
-                <td>@Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" }, @value = DateTime.Now, @readonly = "readonly" }) </td>
-                <td> @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" }) </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.InvoiceNo)</td>
-                <td>@Html.TextBoxFor(c => c.InvoiceNo, Model.InvoiceNo, new { @placeholder = "Code" })</td>
-                <td>@Html.ValidationMessageFor(c => c.InvoiceNo)</td>
-            </tr>
-            <tr>
-                <td>Supplier Name : </td>
-                <td>@Html.DropDownListFor(c => c.SupplierId, Model.SupplierSelect, "--Select--")</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Product Name : </td>
-                <td>@Html.DropDownListFor(c => c.ProductId, Model.ProductSelect, "--Select--")</td>
-                <td></td>
-            </tr>
-            <tr>
+                    <td>@Html.LabelFor(c => c.ManufactureDate)</td>
+                    <td>@Html.EditorFor(model => model.ManufactureDate, new { id = "ManufactureDate", htmlAttributes = new { @class = "form-control" }, @value = DateTime.Now, @readonly = "readonly" }) </td>
+                    <td> @Html.ValidationMessageFor(model => model.ManufactureDate, "", new { @class = "text-danger" }) </td>
+                </tr>
+                <tr>
 
-                <td>@Html.LabelFor(c => c.ManufactureDate)</td>
-                <td>@Html.EditorFor(model => model.ManufactureDate, new { htmlAttributes = new { @class = "form-control" }, @value = DateTime.Now, @readonly = "readonly" }) </td>
-                <td> @Html.ValidationMessageFor(model => model.ManufactureDate, "", new { @class = "text-danger" }) </td>
-            </tr>
-            <tr>
+                    <td>@Html.LabelFor(c => c.ExpireDate)</td>
+                    <td>@Html.EditorFor(model => model.ExpireDate, new { htmlAttributes = new { id = "ExpireDate", @class = "form-control" }, @value = DateTime.Now, @readonly = "readonly" }) </td>
+                    <td> @Html.ValidationMessageFor(model => model.ExpireDate, "", new { @class = "text-danger" }) </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.Remarks)</td>
+                    <td>@Html.TextBoxFor(c => c.Remarks, Model.Remarks, new { @placeholder = "Write Remarks Values" })</td>
+                    <td>@Html.ValidationMessageFor(c => c.Remarks)</td>
+                </tr>
+            </table>
+        </div>
+        <div class="div2">
+            <table class="td1">
+                <tr>
+                    <td>@Html.LabelFor(c => c.Quantity)</td>
+                    <td><input type="number" name="Quantity" id="quantity" value="@Model.Quantity" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.Quantity)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.UnitPrice)</td>
+                    <td><input type="number" name="UnitPrice" id="Unit" value="@Model.UnitPrice" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.UnitPrice)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.TotalPrice)</td>
+                    <td><input type="number" name="TotalPrice" id="Total" value="@Model.TotalPrice" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.TotalPrice)</td>
+                <tr>
+                    <td>@Html.LabelFor(c => c.PreviousUnit)</td>
+                    <td><input type="number" name="PreviousUnit" value="@Model.PreviousUnit" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.PreviousUnit)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.PreviousMRP)</td>
+                    <td><input type="number" name="PreviousMRP" value="@Model.PreviousMRP" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.PreviousMRP)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(c => c.MRP)</td>
+                    <td><input type="number" name="MRP" id="MRP" value="@Model.MRP" /></td>
+                    <td>@Html.ValidationMessageFor(c => c.MRP)</td>
+                     <td><input class="btn-danger btn-xs" type="button" id="add" value="Add" /></td>
 
-                <td>@Html.LabelFor(c => c.ExpireDate)</td>
-                <td>@Html.EditorFor(model => model.ExpireDate, new { htmlAttributes = new { @class = "form-control" }, @value = DateTime.Now, @readonly = "readonly" }) </td>
-                <td> @Html.ValidationMessageFor(model => model.ExpireDate, "", new { @class = "text-danger" }) </td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Quantity)</td>
-                <td><input type="number" name="Quantity" id="quantity" value="@Model.Quantity" /></td>
-                <td>@Html.ValidationMessageFor(c => c.Quantity)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.UnitPrice)</td>
-                <td><input type="number" name="UnitPrice" id="Unit" value="@Model.UnitPrice" /></td>
-                <td>@Html.ValidationMessageFor(c => c.UnitPrice)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.TotalPrice)</td>
-                <td><input type="number" name="TotalPrice" id="Total" value="@Model.TotalPrice" /></td>
-                <td>@Html.ValidationMessageFor(c => c.TotalPrice)</td>
-            <tr>
-                <td>@Html.LabelFor(c => c.PreviousUnit)</td>
-                <td><input type="number" name="PreviousUnit" value="@Model.PreviousUnit" /></td>
-                <td>@Html.ValidationMessageFor(c => c.PreviousUnit)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.PreviousMRP)</td>
-                <td><input type="number" name="PreviousMRP" value="@Model.PreviousMRP" /></td>
-                <td>@Html.ValidationMessageFor(c => c.PreviousMRP)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.MRP)</td>
-                <td><input type="number" name="MRP" id="MRP" value="@Model.MRP" /></td>
-                <td>@Html.ValidationMessageFor(c => c.MRP)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(c => c.Remarks)</td>
-                <td>@Html.TextBoxFor(c => c.Remarks, Model.Remarks, new { @placeholder = "Write Remarks Values" })</td>
-                <td>@Html.ValidationMessageFor(c => c.Remarks)</td>
-            </tr>
-            <tr>
-                <td> Action </td>
-                <td><input class='btn btn-info btn-xs' type="submit" value="Entry" /></td>
-                <td>
-                    @if (ViewBag.Message != null)
-                    {
-                        <h3>
-                            <b>
-                                @ViewBag.Message
-                            </b>
-                        </h3>
-                    }
-                </td>
-            </tr>
+                </tr>
+            </table>
+        </div>
+        <table class="div4">
+            <thead>
+                <tr style="color:red">
+                    <td>Sl</td>
+                    <td >InVoice</td>
+                    <td>Manufactured Date</td>
+                    <td>Expire Date</td>
+                    <td>Quantity</td>
+                    <td>Unit Price(Tk)</td>
+                    <td>Total(Tk)</td>
+                    <td>MRP (Tk)</td>
+                    <td><input class="w3-button w3-purple" type="submit" value="Save" /></td>
+                </tr>
+            </thead>
+            <tbody id="ResultDetailsTable">
+            </tbody>
         </table>
     </form>
+
+
+
 </div>
 @section MyScript
     {
@@ -128,7 +136,8 @@
 
         var quantity = 0;
         var Unit = 0;
-        var mrp = 25;
+        var index = 0;
+
         $("#quantity").keyup(function () {
 
             if (!isNullOrEmpty($("#quantity").val())) {
@@ -141,7 +150,10 @@
             }
 
             $("#Total").val(quantity * Unit);
-             $("#MRP").val(quantity * Unit)+((mrp/100)*(quantity * Unit));
+
+            $("#MRP").val(((Unit * 25) / 100) + (quantity * Unit));
+
+            //$("#MRP").val(quantity * Unit)+((mrp/100)*(quantity * Unit));
 
         });
         $("#Unit").keyup(function () {
@@ -154,7 +166,8 @@
                 Unit = parseInt($("#Unit").val());
             }
             $("#Total").val(quantity * Unit);
-               $("#MRP").val((quantity * Unit)+((mrp/100)*(quantity * Unit)));
+            $("#MRP").val(((Unit * 25) / 100) + (quantity * Unit));
+            // $("#MRP").val((quantity * Unit)+((mrp/100)*(quantity * Unit)));
         });
 
 
@@ -163,9 +176,64 @@
                 return true;
             }
             return false;
-
         }
     });
+
+    $(document).ready(function () {
+        var index = 0;
+
+        $('#add').click(function () {
+            var result = GetResultData();
+
+            var resultRow = GerResultRow(result);
+
+            $("#ResultDetailsTable").append(resultRow);
+            index++;
+        });
+
+        function GetResultData() {
+
+            var Invoice = $('#Invoice').val();
+            var ManufactureDate = $('#ManufactureDate').val();
+            var ExpireDate = $('#ExpireDate').val();
+            var quantity = $('#quantity').val();
+            var Unit = $('#Unit').val();
+            var Total = $('#Total').val();
+            var MRP = $('#MRP').val();
+
+            return { Invoice: Invoice, ManufactureDate: ManufactureDate, ExpireDate, quantity: quantity, Unit: Unit, Total: Total, MRP: MRP }
+        }
+
+        var sl = index;
+        function GerResultRow(result) {
+
+            var Invoice = "<input type='hidden' name='ResultDetailses[" + index + "].Invoice' value='" + result.Invoice + "'></div>";
+            var ManufactureDate = "<input type='hidden' name='ResultDetailses[" + index + "].ManufactureDate' value='" + result.ManufactureDate + "'></div>";
+            var ExpireDate = "<input type='hidden' name='ResultDetailses[" + index + "].ExpireDate' value='" + result.ExpireDate + "'></div>";
+            var quantity = "<input type='hidden' name='ResultDetailses[" + index + "].quantity' value='" + result.quantity + "'></div>";
+            var Unit = "<input type='hidden' name='ResultDetailses[" + index + "].Unit' value='" + result.Unit + "'></div>";
+            var Total = "<input type='hidden' name='ResultDetailses[" + index + "].Total' value='" + result.Total + "'></div>";
+            var MRP = "<input type='hidden' name='ResultDetailses[" + index + "].MRP' value='" + result.MRP + "'></div>";
+
+
+
+            var startTr = "<tr>";
+            var slCell = "<td class='text-success'>" + (++sl) + "</td>";
+            var Invoice = "<td class='text-success'>" + Invoice + result.Invoice + "</td>";
+            var ManufactureDate = "<td class='text-success'>" + ManufactureDate + result.ManufactureDate + "</td>";
+            var ExpireDate = "<td class='text-success'>" + ExpireDate + result.ExpireDate + "</td>";
+            var quantity = "<td class='text-success'>" + quantity + result.quantity + "</td>";
+            var Unit = "<td class='text-success'>" + Unit + result.Unit + "</td>";
+            var Total = "<td class='text-success'>" + Total + result.Total + "</td>";
+            var MRP = "<td class='text-success'>" + MRP + result.MRP + "</td>";
+            var endTr = "</tr>";
+
+            return (startTr + slCell + Invoice + ManufactureDate + ExpireDate + quantity + Unit + Total + MRP + endTr);
+
+        }
+
+    });
+
 
 
 

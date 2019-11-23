@@ -21,7 +21,7 @@ namespace DotNetExpress.DatabaseDbContext.DatabaseDbContext
         public DbSet<Supplier> Suppliers { set; get; }
         public DbSet<Purchase> Purchases{ set; get; }
 
-
+       
 
     }
 }

@@ -105,6 +105,7 @@
     <Content Include="CSS\Business\Category\View.css" />
     <Content Include="CSS\Business\Default\View.css" />
     <Content Include="CSS\Business\Home.css" />
+    <Content Include="CSS\Business\Purchase.css" />
     <Content Include="Global.asax" />
     <Content Include="Image\logo.png" />
     <None Include="Scripts\jquery-1.8.0.intellisense.js" />

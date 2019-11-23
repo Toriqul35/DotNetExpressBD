@@ -14,7 +14,6 @@ namespace DotNetExpress.Model.Model
             ProductId = new List<Purchase>();
         }
         public int Id { get; set; }
-        
         public string Code { get; set; }
         public string Name { get; set; }
         public string Reorder_lavel { get; set; }
